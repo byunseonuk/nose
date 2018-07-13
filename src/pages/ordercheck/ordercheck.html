@@ -1,0 +1,29 @@
+<div class="container">
+  <div *ngFor="let ordercheck of orderchecklist;"
+    class="orderwrapper">
+    <div class="datewrapper">
+      <div class="date">
+        <span>{{ordercheck.paymentdate}}</span>
+      </div>
+      <div class="dateline">
+      </div>
+    </div>
+    <div class="order">
+      <table class="table">
+        <tr>
+          <td width="20%" class="text">{{ordercheck.name}}</td>
+          <td width="40%">
+            <ul>
+              <li *ngFor="let orderp of ordercheck.orderp">
+                <span class="storename">{{orderp.name}}</span>
+                <span class="amount">{{orderp.amount}}개</span>
+              </li>
+            </ul>
+          </td>
+          <td width="20%" class="text">총 금액<br>{{ordercheck.totalprice}}</td>
+          <td width="20%" class="text">{{ordercheck.paymentstate}}</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>

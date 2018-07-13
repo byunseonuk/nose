@@ -1,0 +1,110 @@
+.container{
+  width: 100%;
+  button {
+    cursor: pointer;
+  }
+  .sidenav {
+    width: 100%;
+    .sidenavlist {
+      list-style: none;
+      display: flex;
+      padding: 0;
+      margin-left: 250px;
+    }
+    .sidenavlist li{
+      width: 200px;
+      text-align: center;
+      height: 50px;
+      li:hover {
+        cursor: pointer;
+      }
+      a {
+        text-decoration: none;
+      }
+      a:visited {
+        color: black;
+      }
+    }
+  }
+  .productcontainer{
+    width: 100%;
+    .productlist {
+      margin-left: 300px;
+      margin-right: 450px;
+      .eachproduct {
+        display: flex;
+        padding-top: 20px;
+        padding-left: 20px;
+        padding-right: 20px;
+        background: rgb(248, 246, 246);
+        height: 190px;
+        border-bottom: 1px solid gray;
+        .product-info {
+          margin-left: 10px;
+        }
+        .detail-cart-btn {
+          margin-top: 15px;
+          margin-left: 20px;
+          width: 100px;
+          button {
+            margin-bottom: 20px;
+          }
+        }
+        .productimg {
+          width: 250px;
+        }
+        .product-info {
+          margin-top: 15px;
+          display: grid;
+          margin-left: 20px;
+          font-size: 20px;
+          width: 70%;
+        }
+        .product-order-num {
+          margin-top: 15px;
+          input {
+            background: rgb(250, 246, 185);
+            margin-top: 20px;
+            outline: none;
+            border: 2px inset gray;
+            width: 50px;
+            margin-left: 2px;
+            font-size: 15px;
+          }
+        }
+      }
+    }
+  }
+  #ordernav {
+    width: 20%;
+    max-height: 300px;
+    overflow-y: auto;
+    position: fixed;
+    bottom: 220px;
+    right: 100px;
+    text-align: center;
+    p {
+      background-color: black;
+    }
+    .pay-btn-class {
+      
+      width: 150px;
+      height: 50px;
+      background-color: rgb(253, 98, 131);
+      border: 2px solid  rgb(253, 98, 131);
+    }
+    .orderproduct {
+      width: 80%;
+      text-align: left;
+      margin-bottom: 10px;
+      margin-left: 30px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid gainsboro;
+      button {
+        float: right;
+        background-color: white;
+        border: none;
+      }
+    }
+  }
+}

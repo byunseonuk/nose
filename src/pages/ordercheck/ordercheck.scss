@@ -1,0 +1,48 @@
+.container{
+  margin: auto;
+  width: 75%;
+  padding-top: 50px;
+  .orderwrapper{
+    padding-bottom: 50px;
+    .datewrapper{
+      position: relative;
+      .date {
+        margin-left: 45%;
+        margin-right: 45%;
+        border-radius: 100px;
+        border: 1px solid black;
+        text-align: center;
+        font-size: 20px;
+        position: relative;
+        background: white;
+        z-index: 1;
+      }
+      .dateline {
+        border: 1px solid black;
+        width: 100%;
+        position: absolute;
+        top: 10px;
+      }
+    }
+    .order {
+      display: flex;
+      padding-top: 20px;
+      padding-bottom: 20px;
+      .table {
+        width: 100%;
+        .text {
+          text-align: center;
+        }
+        ul {
+          list-style: none;
+          .amount {
+            float: right;
+          }
+          li {
+            padding: 10px;
+          }
+        }    
+      }
+    }
+  }
+}
