@@ -1,0 +1,91 @@
+<div class = "request-conatiner">
+    <div class = "request-child-panel">
+        <div class="support-panel">
+            <div class="desc-panel">
+                <h2>Support</h2>
+                <p>노즈워크를 통해 정식 수입 및 판매되는 모든 제품의 품질을 보증합니다.<br> 
+                    더욱 만족하며 사용하실 수 있도록 서포트 서비스를 제공하고 있습니다.</p>
+            </div>
+            <div class="btn-div">
+                <button class="btn-support" (click)="modifydisplay(true)">문의하기</button>
+            </div>
+        </div>
+        <div class="info-panel">
+            <div class="service-panel">    
+                <div class="customer-panel">
+                    <div class="desc-panel">
+                        <h2>Customer Center</h2>
+                        <p>노즈워크 제품에 대해 궁금한 점은 무엇이든 물어보세요.<br>
+                            제품 정보, 사용법, A/S, 소모품 구입 등</p>
+                    </div>
+                    <div class="phone">1600-2190</div>
+                    <div class="hours-panel">
+                        <div>
+                            <span class="name">평일</span>
+                            <span class="divider">┃</span>
+                            09:30 ~ 17:30
+                        </div>
+                        <div>
+                            <span class="name">점심시간</span>
+                            <span class="divider">┃</span>
+                            12:00 ~ 13:00 (주말 및 공휴일 휴무)
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="contact-panel">
+                <h2>After Service Center</h2>
+                <div class="detail-panel">
+                    <div class="address-panel">
+                        <div>
+                            <h2>Address(본사)</h2>
+                            <p>4241 Topsail Ct, Soquel, CA 95073 미국</p>
+                        </div>
+                        <div>
+                            <h2>Address(지사)</h2>
+                            <p>충청남도 천안시 서북구 직산읍 직산로 136, 616호</p>
+                        </div>
+                    </div>
+                    <div class="call-panel">
+                        <h2>Call</h2>
+                        <p>1600-2190</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="myModal" class="modal" [ngStyle]= "{'display': abc ? 'block' : 'none'}">
+    <!-- Modal content -->
+    <div class="modal-content">
+        <div>
+            <span class="close" (click)="modifydisplay(flase)">X</span>
+        </div>
+        <div class="modal-header">
+        <h2>이메일 문의하기</h2>
+        </div>
+        <div class="modal-body">
+        <p>문의사항이 있으신가요?</p>
+        </div>
+        <div class="modal-footer">
+            <form class="footer-panel">
+                <div class="input-panel">
+                    <input class="EamilAddr"
+                    placeholder="이메일 주소">
+                </div>
+                <div class="textarea-panel">
+                    <div class="content">
+                            <label>내용</label>
+                    </div>
+                    <div>
+                            <textarea name="content" class="text"></textarea>
+                    </div>
+                </div>
+                <div>
+                    <button type="submit" class="SendMail">보내기</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

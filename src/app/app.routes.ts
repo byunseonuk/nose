@@ -23,6 +23,8 @@ import { Ordermanage } from "../pages/ordermanage/ordermanage";
 import { Ordercheck } from "../pages/ordercheck/ordercheck";
 import { Writenotice } from "../pages/notice/writenotice/writenotice";
 import { Refundrequest } from "../pages/order/refundrequest/refundrequest";
+import { ServiceCenter } from "../pages/servicecenter/servicecenter";
+import { Board } from "../pages/board/board";
 
 export const routes = [
   {
@@ -69,6 +71,16 @@ export const routes = [
     label: '반품/환불요청',
     path: 'refundrequest',
     component: Refundrequest
+  },
+  {
+    label: '정보게시판',
+    path: 'board',
+    component: Board
+  },
+  {
+    label: '고객센터',
+    path: 'servicecenter',
+    component: ServiceCenter
   }
 ];
 

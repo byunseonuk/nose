@@ -16,7 +16,16 @@ import { Writenotice } from '../pages/notice/writenotice/writenotice';
 import { Refundrequest } from '../pages/order/refundrequest/refundrequest';
 import { FroalaEditorModule, FroalaViewModule } from 'angular2-froala-wysiwyg';
 import { Appservice } from '../service/app.service';
-import {MdUniqueSelectionDispatcher, MaterialRootModule} from "@angular/material";
+import { Board } from '../pages/board/board';
+import { Mypage } from '../pages/board/mypage/mypage';
+import { ManagerInfo } from '../pages/board/managerinfo/managerinfo';
+import { SalesStatus } from '../pages/board/salesstatus/salestatus';
+import { ServiceCenter } from '../pages/servicecenter/servicecenter';
+import { AuthMypage } from '../pages/board/mypage/authmypage/authmypage';
+import { ManagerPage } from '../pages/board/ManagerPage/managerpage';
+import {Request} from '../pages/servicecenter/request/request';
+import {ChartsModule} from 'ng2-charts';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,7 +38,15 @@ import {MdUniqueSelectionDispatcher, MaterialRootModule} from "@angular/material
     Ordermanage,
     Ordercheck,
     Writenotice,
-    Refundrequest
+    Refundrequest,
+    Board,
+    Mypage,
+    ManagerInfo,
+    SalesStatus,
+    ServiceCenter,
+    Request,
+    AuthMypage,
+    ManagerPage
   ],
   imports: [
     BrowserModule,
@@ -38,7 +55,7 @@ import {MdUniqueSelectionDispatcher, MaterialRootModule} from "@angular/material
     routing,
     FroalaEditorModule,
     FroalaViewModule,
-    MaterialRootModule
+    ChartsModule
   ],
   providers: [
     Appservice

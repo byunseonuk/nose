@@ -1,0 +1,19 @@
+.servicecenter-header-pannel {
+    list-style: none; 
+    height:30px; 
+    display: flex;
+    text-align: -webkit-center;
+    justify-content: center;
+}
+
+.servicecenter-header-child {
+    text-decoration: none;
+    width: 200px;
+    font-size: 15px;
+    font-weight: bold;
+    text-align: center;
+  }
+
+  span {
+      cursor: pointer;
+  }

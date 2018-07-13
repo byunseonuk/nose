@@ -1,0 +1,75 @@
+<div class="mypage-container">
+    <div class="mypage-pannel">
+        <div class="mypage-header-pannel">내 정보</div>
+        <div class="mypage-child-pannel">
+            <div class="mypage-child">
+                <table class="mypage-table">
+                    <tbody>
+                        <tr>
+                            <th>아이디</th>
+                            <td>{{testdata[0].id}}</td>
+                        </tr>
+                        <tr>
+                            <th>이름</th>
+                            <td>{{testdata[0].name}}</td>
+                        </tr>
+                        <tr>
+                            <th>휴대폰 번호</th>
+                            <td>{{testdata[0].phone}}</td>
+                        </tr>
+                        <tr>
+                            <th>비밀번호변경</th>
+                            <td>
+                                <div class="usermodify-password">
+                                    <table>
+                                        <tr>
+                                            <td colspan="2">
+                                                <div class="usermodify-password-notice">
+                                                    ※ 비밀번호는 6~15자 이내로 영문 (대문자,소문자), 숫자, 특수 문자 3가지 조합중 2가지 이상을 조합하셔서 작성하시면 됩니다.<br>단, 3가지 모두를 조합하실 경우 더욱 강력한 패스워드 구현이 가능합니다.
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th>현재 비밀번호</th>
+                                            <td>
+                                                <input class="CurrentPw">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th>신규 비밀번호</th>
+                                            <td>
+                                                <input class="NewPw">        
+                                            </td>
+                                            
+                                        </tr>
+                                        <tr>
+                                            <th>비밀번호 다시 입력</th>
+                                            <td>
+                                            <input class="confirmPw">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td></td>
+                                            <td>
+                                                <button class="changePw">비밀번호 변경</button>
+                                            </td>
+                                        </tr>
+                                        
+                                    </table>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>주소</th>
+                            <td>{{testdata[0].addr}}</td>
+                        </tr>
+                        <tr>
+                            <th>등급</th>
+                            <td>{{testdata[0].grade}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

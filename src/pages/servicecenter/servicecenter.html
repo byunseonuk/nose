@@ -1,0 +1,13 @@
+<div class='servicecenter-container'>
+        <div class='servicecenter-header-pannel' role="navigation">
+            <li class="servicecenter-header-child">
+                <span class="request"(click)="test('a')">
+                    1:1 문의
+                </span>
+            </li>
+        </div>
+</div>
+
+<div *ngIf="pageNumber == 'a'">
+        <request></request>
+</div>

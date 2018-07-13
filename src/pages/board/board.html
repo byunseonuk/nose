@@ -1,0 +1,37 @@
+<div class='board-container'>
+    <div class='board-header-pannel' role="navigation">
+        <li class="board-header-child">
+            <span class="Mypage"(click)="test('a')">
+                내 정보
+            </span>
+        </li>
+        <li class="board-header-child">
+            <span class="MangerInfo" (click)="test('b')">
+                담당자 정보 확인
+            </span>
+        </li>
+        <li class="board-header-child">
+            <span class="SalesStatus" (click)="test('c')">
+                기간별 매출현황
+            </span>
+        </li>
+        <li class="board-header-child">
+            <span class="ManagerPage" (click)="test('d')">
+                담당자 입력(관리자)
+            </span>
+        </li>
+    </div>
+    <div class='board-main-panel'></div>
+</div>
+<div *ngIf="pageNumber == 'a'">
+    <authmypage></authmypage>
+</div>
+<div *ngIf="pageNumber == 'b'">
+    <managerinfo></managerinfo>
+</div>
+<div *ngIf="pageNumber == 'c'">
+    <salesstatus></salesstatus>
+</div>
+<div *ngIf="pageNumber == 'd'">
+    <managerpage></managerpage>
+</div>

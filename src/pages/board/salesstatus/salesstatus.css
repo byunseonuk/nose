@@ -1,0 +1,24 @@
+.status-container {
+    margin-top: 20px;
+    text-align: center;
+}
+.status-pannel{
+    display: inline-block;
+    margin-top: 5px;
+}
+.status-header-pannel{
+    font-size: 25px;
+    margin-left: 5px;
+    text-align: left;
+}
+/* .status-child-pannel{
+    margin-top: 25px;
+}
+.status-child div{
+    font: 20px sans-serif;
+    background-color: steelblue;
+    text-align: right;
+    padding: 3px;
+    margin-top: 1px;
+    color: white
+} */

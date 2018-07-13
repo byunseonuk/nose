@@ -1,0 +1,29 @@
+<!-- <div class ="salesstatus-container">
+    <div class="status-pannel">
+        
+        <div class="status-child-pannel">
+            <div class="status-child">
+                <div class="bar-child1">4</div>
+                <div class="bar-child2">8</div>
+                <div class="bar-child3">12</div>
+            </div>
+        </div>
+    </div>
+</div> -->
+<div class="status-container">
+    <div class="status-pannel">
+        <div class="status-header-pannel">
+            기간별 매출현황
+        </div>
+        <div>
+            <canvas baseChart
+                    style="display: block; height: 500px; width: 1000px;"
+                    [data]="pieChartData"
+                    [labels]="pieChartLabels"
+                    [chartType]="pieChartType"
+                    (chartHover)="chartHovered($event)"
+                    (chartClick)="chartClicked($event)">
+            </canvas>
+        </div>
+    </div>
+</div>
