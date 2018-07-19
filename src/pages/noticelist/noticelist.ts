@@ -11,13 +11,18 @@ import { NoticeForm } from '../../tmpdata/noticeform';
 export class Noticelist extends OnInit{
   ngOnInit(){
     this.noticedata=NoticeData;
+    if(this.appservice.getlog()==='admin'){
+      this.auth=true;
+    }else {
+      this.auth=false;
+    }
   }
   constructor(private appservice:Appservice){
     super();
   }
   noticedata=[];
   notice:NoticeForm;
-  
+  auth;
   setnotice(number,title,date,contents){
     console.log(number);
     console.log(title);

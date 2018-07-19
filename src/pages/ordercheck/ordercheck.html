@@ -1,29 +1,41 @@
 <div class="container">
-  <div *ngFor="let ordercheck of orderchecklist;"
-    class="orderwrapper">
-    <div class="datewrapper">
-      <div class="date">
-        <span>{{ordercheck.paymentdate}}</span>
+    <div class="wrapper">
+      <div *ngFor="let date of datelist;">
+        <div class="datewrapper">
+          <div class="date">
+            <span>{{date}}</span>
+          </div>
+          <div class="dateline">
+          </div>
+        </div>
+        <div class="ordercheckwrapper">
+          <table class="table">
+            <div *ngFor="let ordercheck of orderchecklist;" >
+              <tr *ngIf="date===ordercheck.paymentdate;">
+                <td width="10%" class="text">{{ordercheck.name}}</td>
+                <td width="40%">
+                  <ul>
+                    <li *ngFor="let orderp of ordercheck.orderp">
+                      <span style="padding-right: 30px;">{{orderp.name}}</span>
+                      <span>{{orderp.amount}} 개</span>
+                      <span style="float: right;">{{orderp.amount*orderp.price}} 원</span>
+                    </li>
+                  </ul>
+                </td>
+                <td width="20%" class="text">
+                  <p>총 금액</p>
+                </td>
+                <td width="20%" class="text">
+                  <p>구매일</p>
+                </td>
+                <td width="10%" class="text">
+                  <p>입금상태</p>
+                  <p>{{ordercheck.paymentstate}}</p>
+                </td>
+              </tr>
+            </div>
+          </table>
+        </div>
       </div>
-      <div class="dateline">
-      </div>
-    </div>
-    <div class="order">
-      <table class="table">
-        <tr>
-          <td width="20%" class="text">{{ordercheck.name}}</td>
-          <td width="40%">
-            <ul>
-              <li *ngFor="let orderp of ordercheck.orderp">
-                <span class="storename">{{orderp.name}}</span>
-                <span class="amount">{{orderp.amount}}개</span>
-              </li>
-            </ul>
-          </td>
-          <td width="20%" class="text">총 금액<br>{{ordercheck.totalprice}}</td>
-          <td width="20%" class="text">{{ordercheck.paymentstate}}</td>
-        </tr>
-      </table>
     </div>
   </div>
-</div>

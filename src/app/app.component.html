@@ -1,13 +1,24 @@
-<top></top>
-<div class="nav-wrapper">
-  <nav class="topnav">
-    <ul class="topnavlist">
-      <li class="topnavlink"  routerLink="/noticelist" ><a routerLink="/noticelist"><span>공지사항</span></a></li>
-      <li class="topnavlink"  routerLink="/product"><a routerLink="/product"><span>상품발주</span></a></li>
-      <li class="topnavlink"  routerLink="/orderinfo"><a routerLink="/orderinfo"><span>주문/배송확인</span></a></li>
-      <li class="topnavlink"><a routerLink="/board"><span>정보게시판</span></a></li>
-      <li class="topnavlink"><a routerLink="/servicecenter"><span>고객센터</span></a></li>
-    </ul>
-  </nav>
+<div *ngIf="logincheck">
+  <top></top>
+  <div class="nav-wrapper">
+    <nav class="topnav">
+      <ul class="topnavlist" *ngIf="auth">
+        <li class="topnavlink"  routerLink="/noticelist" ><a routerLink="/noticelist"><span>공지사항</span></a></li>
+        <li class="topnavlink"  routerLink="/ordercheck"><a routerLink="/ordercheck"><span>상품발주내역확인</span></a></li>
+        <li class="topnavlink"  routerLink="/product"><a routerLink="/product"><span>상품정보</span></a></li>
+        <li class="topnavlink"  routerLink="/ordermanage"><a routerLink="/ordermanage"><span>주문/배송확인</span></a></li>
+        <li class="topnavlink"><a routerLink="/board"><span>정보게시판</span></a></li>
+        <li class="topnavlink"><a routerLink="/servicecenter"><span>고객센터</span></a></li>
+      </ul>
+      <ul class="topnavlist" *ngIf="!auth">
+        <li class="topnavlink"  routerLink="/noticelist" ><a routerLink="/noticelist"><span>공지사항</span></a></li>
+        <li class="topnavlink"  routerLink="/product"><a routerLink="/product"><span>상품발주</span></a></li>
+        <li class="topnavlink"  routerLink="/orderinfo"><a routerLink="/orderinfo"><span>주문/배송확인</span></a></li>
+        <li class="topnavlink"><a routerLink="/board"><span>정보게시판</span></a></li>
+        <li class="topnavlink"><a routerLink="/servicecenter"><span>고객센터</span></a></li>
+      </ul>
+    </nav>
+  </div>
+  <router-outlet></router-outlet>
 </div>
-<router-outlet></router-outlet>
+<login *ngIf="!logincheck"></login>

@@ -68,5 +68,18 @@ export class Appservice {
     }
   }
 
+  setlog(id){
+    if(id)
+      localStorage.setItem('id',id);
+  }
+  getlog(){
+    let id = localStorage.getItem('id');
+    try{
+      return id;
+    } catch(e){ 
+      return null;
+    }
+  }
+
 
 }

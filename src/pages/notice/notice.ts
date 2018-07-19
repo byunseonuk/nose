@@ -11,13 +11,19 @@ import { Appservice } from '../../service/app.service';
  
 export class Notice extends OnInit{
   ngOnInit(){
-    //this.notice = this.appservice.getnotice(); 
-    this.notice = this.appservice.getwritenotice();
-    var contents=document.getElementById('contents');
-    contents.innerHTML=this.notice.contents;
+    this.notice = this.appservice.getnotice(); 
+    //this.notice = this.appservice.getwritenotice();
+    // var contents=document.getElementById('contents');
+    // contents.innerHTML=this.notice['contents'];
+    // this.title = this.notice.title;
+    // this.contents = this.notice.contents;
+    // this.date = this.notice.date;
   }
   constructor(public appservice:Appservice){
     super();
   }
   notice:NoticeForm;
+  title;
+  date;
+  contents;
 }

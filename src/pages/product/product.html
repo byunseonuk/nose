@@ -1,46 +1,73 @@
 <div class="container">
   <div class="sidenav">
     <ul class="sidenavlist">
-      <li><a href="#puppytoy">강아지 장난감</a></li>
-      <li><a href="#cattoy">고양이 장난감</a></li>
-      <li><a href="#puppyfood">강아지 사료</a></li>
-      <li><a href="#catfood">고양이 사료</a></li>
+      <li (click)="showpro(1)">강아지 장난감</li>
+      <li (click)="showpro(2)">고양이 장난감</li>
+      <li (click)="showpro(3)">강아지 사료</li>
+      <li (click)="showpro(4)">고양이 사료</li>
+      <li *ngIf="auth" routerLink="/proinsert">상품추가</li>
     </ul>
   </div>
-  <div class="productcontainer" >
-    <div id="puppytoy">
+  <div class="productcontainer" *ngIf="displaylist">
+    <div>
       <div class="productlist">
-        <h2>강아지 장난감</h2>
-        <div *ngFor="let product of products;" 
-            class="eachproduct" >
-          <div>
-            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQmvdr5QUNSt3u-QBv5r_WYvSl92EtOCG5gKVbzZEjklxdhl6keyA" alt="상품" class="productimg">
-          </div>
-          <div class="product-info">
-            <div><span> 상품명 : {{product.name}} </span></div>
-            <div><span> 가격   : {{product.price}} </span></div>
-          </div>
-          
-          <div class="product-order-num">
-            <span>수량</span><br>
-            <input type="text" placeholder="0" (keyup)="nose11($event)"/>
-          </div>
-          <div class="detail-cart-btn">
-            <button>상세정보</button>
-            <button (click)="test(product.name,product.price)">담기</button>
-          </div>
-        </div>  
+        <h2 *ngIf="nowcategory===1">강아지 장난감</h2>
+        <h2 *ngIf="nowcategory===2">고양이 장난감</h2>
+        <h2 *ngIf="nowcategory===3">강아지 사료</h2>
+        <h2 *ngIf="nowcategory===4">고양이 사료</h2>
+        <div *ngFor="let product of products;">
+          <div *ngIf="nowcategory===product.category"
+              class="eachproduct">
+            <div class="product-info">
+              <div><span> 상품명 : {{product.name}} </span></div>
+              <div><span> 가격   : {{product.price}} </span></div>
+            </div>
+            <div class="product-order-num"
+                *ngIf="!auth">
+              <span>수량</span><br>
+              <input type="text" placeholder="0" (keyup)="nose11($event)"/>
+            </div>
+            <div class="detail-cart-btn" *ngIf="!auth">
+              <button (click)="display_modal(product)">상세정보</button>
+              <button (click)="test(product.name,product.price)">담기</button>
+            </div>
+            <div *ngIf="auth">
+              <button (click)="update(product)">수정</button>
+            </div>
+          </div>  
+        </div>
       </div>
     </div>
   </div>
-  <div id="ordernav">
+  <div id="ordernav" *ngIf="!auth">
     <p> </p>
     <div *ngFor="let nose of nose1; let idx = index"
         class="orderproduct" >
       <span>{{nose.name}} : {{nose.amount}} 개</span><button (click)="del_order(idx)">X</button>
     </div>
     <div>
+      <span>총 금액: {{totalprice}}</span>
+    </div>
+    <div>
       <button (click)="pay()" class="pay-btn-class">결제하기</button>
+    </div>
+  </div>
+</div>
+<!-- <proupdate [ngStyle]="{'display': displayupdate ? 'block':'none'}" [updatepro]="updatepro"></proupdate> -->
+<proupdate *ngIf="displayupdate" [updatepro]="updatepro"></proupdate>
+<div id="detail-modal" [ngStyle]="{'display': displaymodal ? 'block' : 'none'}">
+  <div class="modal-container">
+    <div>
+      <button (click)="close_modal()">x</button>
+    </div>
+    <div>
+      <label>상품명</label><label *ngIf="detail!=null">{{detail.name}}</label>
+    </div>
+    <div>
+      <label>가격</label><label *ngIf="detail!=null">{{detail.price}}</label>
+    </div>
+    <div>
+      <!-- <lable>상세내용</lable><lable>{{detail.detail}}</lable> -->
     </div>
   </div>
 </div>

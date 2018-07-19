@@ -25,7 +25,14 @@ import { AuthMypage } from '../pages/board/mypage/authmypage/authmypage';
 import { ManagerPage } from '../pages/board/ManagerPage/managerpage';
 import {Request} from '../pages/servicecenter/request/request';
 import {ChartsModule} from 'ng2-charts';
-
+import { Proinsert } from '../pages/product/proinsert/proinsert';
+import { Proupdate} from '../pages/product/proupdate/proupdate';
+import { Signup } from '../pages/signup/signup';
+import { AuthService } from '../service/auth.service';
+import {HttpInterceptorModule} from "../lib/ng-http-interceptor/http/module";
+import { DialogService } from '../service/dialog-message/dialog-message.service';
+import { DialogMessage } from '../service/dialog-message/dialog-message.component';
+import { MdDialogModule, MdIconRegistry } from '@angular/material';
 @NgModule({
   declarations: [
     AppComponent,
@@ -46,7 +53,11 @@ import {ChartsModule} from 'ng2-charts';
     ServiceCenter,
     Request,
     AuthMypage,
-    ManagerPage
+    ManagerPage,
+    Proinsert,
+    Proupdate,
+    Signup,
+    DialogMessage
   ],
   imports: [
     BrowserModule,
@@ -55,11 +66,23 @@ import {ChartsModule} from 'ng2-charts';
     routing,
     FroalaEditorModule,
     FroalaViewModule,
-    ChartsModule
+    ChartsModule,
+    HttpInterceptorModule.noOverrideHttp(),
+    MdDialogModule.forRoot()
   ],
   providers: [
-    Appservice
+    Appservice,
+    AuthService,
+    DialogService,
+    MdIconRegistry,
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [
+
+    Login,
+    Signup,
+    DialogMessage,
+
+  ]
 })
 export class AppModule { }

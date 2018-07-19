@@ -1,6 +1,11 @@
 <div id="notice-board-wrapper">
   <div class="head">
     <h2>공지사항</h2>
+    <div>
+      <button *ngIf="auth" class="write"
+              routerLink="/writenotice"
+      >글쓰기</button>
+    </div>
   </div>
   <div class="notice-board-container">
     <table class="table">

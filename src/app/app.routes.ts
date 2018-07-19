@@ -14,6 +14,7 @@ import {ModuleWithProviders} from "@angular/core";
 import {RouterModule} from "@angular/router";
 
 // Project Sources
+import { AppComponent } from "./app.component";
 import { Product } from "../pages/product/product";
 import { Notice } from "../pages/notice/notice";
 import { Noticelist } from "../pages/noticelist/noticelist";
@@ -25,8 +26,15 @@ import { Writenotice } from "../pages/notice/writenotice/writenotice";
 import { Refundrequest } from "../pages/order/refundrequest/refundrequest";
 import { ServiceCenter } from "../pages/servicecenter/servicecenter";
 import { Board } from "../pages/board/board";
-
+import { Proinsert } from '../pages/product/proinsert/proinsert';
+import { Proupdate} from '../pages/product/proupdate/proupdate';
+import { Signup } from '../pages/signup/signup';
 export const routes = [
+  {
+    path: '',
+    redirectTo: '/noticelist',
+    pathMatch: 'full',
+  },
   {
     label: '공지사항자세히',
     path: 'notice',
@@ -81,6 +89,21 @@ export const routes = [
     label: '고객센터',
     path: 'servicecenter',
     component: ServiceCenter
+  },
+  {
+    label: '상품추가',
+    path: 'proinsert',
+    component: Proinsert
+  },
+  {
+    label: '상품수정',
+    path: 'proupdate',
+    component: Proupdate
+  },
+  {
+    label: '유저생성',
+    path: 'signup',
+    component: Signup
   }
 ];
 

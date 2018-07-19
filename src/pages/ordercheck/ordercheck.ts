@@ -16,6 +16,9 @@ export class Ordercheck extends OnInit{
     super();
   }
   ordercheck;
+  datelist=[
+    '2018.07.14',
+    '2018.07.13']
   orderchecklist=OrderCheckData;
   ngOnInit(){
     this.ordercheck = this.appservice.getordercheck();
