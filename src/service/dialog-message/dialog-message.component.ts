@@ -23,7 +23,7 @@ import { MdDialogRef } from "@angular/material";
 @Component({
   selector: 'dialog-message',
   templateUrl: './dialog-message.component.html',
-  // template: getTemplate('shared/components/dialog-message/dialog-message.component')
+  styleUrls: ['./dialog-message.scss']
 })
 export class DialogMessage {
 

@@ -1,0 +1,157 @@
+<!--
+/**
+ * Created by PHILIP on 12/07/2017
+ * As part of NoseWork 
+ *
+ * Copyright (C) Applicat (www.applicat.co.kr) & PHILIP - All Rights Reserved
+ * Unauthorized copying of this file, via any medium is strictly prohibited
+ * Proprietary and confidential
+ * Written by PHILIP <hbnb7894@gmail.com>, 12/07/2017
+ *
+ */
+-->
+<div class="sidenav-wrraper">
+  <div class="sidenav-container"
+      [ngClass]="{'opened' : state == side_nav_status.OPENED,
+                    'half-opened' : state == side_nav_status.HALF_OPENED}">
+
+    <!-- sidenav-panel -->
+    <div class="sidenav-panel">
+
+      <!-- logo-panel -->
+      <div class="logo-panel">
+        <!-- logo-open-panel -->
+        <div class="logo-open-panel"
+            *ngIf="state == side_nav_status.OPENED">
+          <img src="../../assets/img/header_symbol.png">
+          <span>NOSEWORK</span>
+        </div>
+        <!-- // logo-open-panel -->
+
+        <!-- logo-half-panel -->
+        <div class="logo-half-panel"
+            *ngIf="state == side_nav_status.HALF_OPENED">
+          <img src="../../assets/img/ic_header_symbol.png">
+        </div>
+        <!-- // logo-half-panel -->
+
+      </div>
+      <!-- // logo-panel -->
+
+      <!-- menu-list-panel -->
+      <div class="menu-list-panel">
+
+        <!-- 웹 배너 관리 -->
+        <div class="menu-panel"
+            (click)="navigate('/web-banner')"
+            routerLink="/web-banner"
+            routerLinkActive="active">
+          <i class="material-icons">add_to_queue</i>
+          <span *ngIf="state == side_nav_status.OPENED">웹 배너 관리</span>
+        </div>
+        <!-- // 웹 배너 관리 -->
+
+        <!-- 스토어 배너 관리 -->
+        <div class="menu-panel"
+            (click)="navigate('/store-banner')"
+            routerLink="/store-banner"
+            routerLinkActive="active">
+          <i class="material-icons">add_to_queue</i>
+          <span *ngIf="state == side_nav_status.OPENED">스토어 배너 관리</span>
+        </div>
+        <!-- // 스토어 배너 관리 -->
+
+        <!-- FAQ 관리 -->
+        <div class="menu-panel"
+            (click)="navigate('/faq')"
+            routerLink="/faq"
+            routerLinkActive="active">
+          <i class="material-icons">question_answer</i>
+          <span *ngIf="state == side_nav_status.OPENED">FAQ 관리</span>
+        </div>
+        <!-- // FAQ 관리 -->
+
+        <!-- 상품 관리 -->
+        <div class="menu-panel"
+            (click)="navigate('/product')"
+            routerLink="/product"
+            routerLinkActive="active">
+          <i class="material-icons">toys</i>
+          <span *ngIf="state == side_nav_status.OPENED">상품 관리</span>
+        </div>
+        <!-- // 상품 관리 -->
+
+        <!-- 회원 관리 -->
+        <div class="menu-panel"
+            (click)="navigate('/user')"
+            routerLink="/user"
+            routerLinkActive="active">
+          <i class="material-icons">person</i>
+          <span *ngIf="state == side_nav_status.OPENED">회원 관리</span>
+        </div>
+        <!-- // 회원 관리 -->
+
+        <!-- 시리얼 관리 -->
+        <div class="menu-panel"
+            (click)="navigate('/serial')"
+            routerLink="/serial"
+            routerLinkActive="active">
+          <i class="material-icons">format_list_numbered</i>
+          <span *ngIf="state == side_nav_status.OPENED">시리얼 관리</span>
+        </div>
+        <!-- // 시리얼 관리 -->
+
+        <!-- 시리얼 관리 -->
+        <div class="menu-panel"
+            (click)="navigate('/genuine')"
+            routerLink="/genuine"
+            routerLinkActive="active">
+          <i class="material-icons">fingerprint</i>
+          <span *ngIf="state == side_nav_status.OPENED">정품 인증 관리</span>
+        </div>
+        <!-- // 시리얼 관리 -->
+
+        <!-- 주문 내역 관리 -->
+        <div class="menu-panel"
+            (click)="navigate('/invoice')"
+            routerLink="/invoice"
+            routerLinkActive="active">
+          <i class="material-icons">receipt</i>
+          <span *ngIf="state == side_nav_status.OPENED">주문 내역 관리</span>
+        </div>
+        <!-- // 주문 내역 관리 -->
+
+        <!-- 푸시알림 -->
+        <div class="menu-panel"
+            (click)="navigate('/push')"
+            routerLink="/push"
+            routerLinkActive="active">
+          <i class="material-icons">notifications</i>
+          <span *ngIf="state == side_nav_status.OPENED">푸시알림</span>
+        </div>
+        <!-- // 푸시알림 -->
+
+        <!-- 버전 관리 -->
+        <div class="menu-panel"
+            (click)="navigate('/version')"
+            routerLink="/version"
+            routerLinkActive="active">
+          <i class="material-icons">smartphone</i>
+          <span *ngIf="state == side_nav_status.OPENED">버전 관리</span>
+        </div>
+        <!-- // 버전 관리 -->
+
+      </div>
+      <!-- menu-list-panel -->
+
+    </div>
+    <!-- // sidenav-panel -->
+
+    <!-- sidenav-child-panel -->
+    <div class="sidenav-child-panel">
+      <ng-content></ng-content>
+    </div>
+    <!-- // sidenav-child-panel -->
+
+  </div>
+</div>

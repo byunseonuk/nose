@@ -15,8 +15,7 @@
       "../node_modules/@types"
     ],
     "types": [
-      "hammerjs",
-      "lodash"
+      "hammerjs"
     ]
   }
 }

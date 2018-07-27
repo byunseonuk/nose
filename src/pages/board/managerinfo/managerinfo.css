@@ -14,8 +14,12 @@
 .managerinfo-child-pannel {
     margin-top: 25px;
 }
+.ManagerPart {
+    text-align: left;
+    margin-top: 10px;
+}
 
-.managerinfo-table{
+/* .managerinfo-table{
     font-family: arial, sans-serif;
     border-top:2px solid grey;
     border-collapse: collapse;
@@ -43,4 +47,4 @@ td{
     width: 220px;
     border-left: 1px solid grey;
     border-bottom: 1px solid #ddd;
-}
+} */

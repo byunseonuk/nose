@@ -1,69 +1,69 @@
 <div class="customer-container">
-        <div class="main-pannel">
-            <div class="header-pannel">고객 정보</div>
-            <div class="child-pannel">
-                <div class="child">
-                    <table class="customer-table">
-                        <tbody>
-                            <tr>
-                                <th>아이디</th>
-                                <td>{{testdata[0].id}}</td>
-                            </tr>
-                            <tr>
-                                <th>이름</th>
-                                <td>{{testdata[0].name}}</td>
-                            </tr>
-                            <tr>
-                                <th>휴대폰 번호</th>
-                                <td>{{testdata[0].phone}}</td>
-                            </tr>
-                            <tr>
-                                <th>주소</th>
-                                <td>{{testdata[0].addr}}</td>
-                            </tr>
-                            <tr>
-                                <th>등급</th>
-                                <td>
-                                    <select name="job" >
-                                            <option value="">{{testdata[0].grade}}</option>
-                                            <option value="Flatinum">플래티넘</option>
-                                            <option value="Gold">골드</option>
-                                            <option value="silver">실버</option>
-                                            <option value="Bronze">브론즈</option>
-                                    </select>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
+    <div class="main-pannel">
+        <div class="header-pannel">고객 정보</div>
+        <div class="child-pannel">
+            <div class="child">
+                <table class="customer-table">
+                    <tbody>
+                        <tr>
+                            <th>아이디</th>
+                            <td>{{testdata[0].id}}</td>
+                        </tr>
+                        <tr>
+                            <th>이름</th>
+                            <td>{{testdata[0].name}}</td>
+                        </tr>
+                        <tr>
+                            <th>휴대폰 번호</th>
+                            <td>{{testdata[0].phone}}</td>
+                        </tr>
+                        <tr>
+                            <th>주소</th>
+                            <td>{{testdata[0].addr}}</td>
+                        </tr>
+                        <tr>
+                            <th>등급</th>
+                            <td>
+                                <select name="job" >
+                                        <option value="">{{testdata[0].grade}}</option>
+                                        <option value="Flatinum">플래티넘</option>
+                                        <option value="Gold">골드</option>
+                                        <option value="silver">실버</option>
+                                        <option value="Bronze">브론즈</option>
+                                </select>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
-            <div class='header-pannel'>담당자</div>
-                <div class='child-pannel'>
-                <div class="child">
-                    <table class="customer-table">
-                        <tbody>
-                            <tr>
-                                <th>이름</th>
-                                <td>
-                                    <input class="ManagerName">
-                                </td>
-                            </tr>
-                            <tr>
-                                <th>연락처</th>
-                                <td>
-                                    <input class="ManagerTel">
-                                </td>
-                            </tr>
-                            <tr>
-                                <th>이메일</th>
-                                <td>
-                                    <input class="ManagerEmail">
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-            <button class="btn-confirm">저장</button>
         </div>
+        <div class='header-pannel'>담당자</div>
+            <div class='child-pannel'>
+            <div class="child">
+                <table class="customer-table">
+                    <tbody>
+                        <tr>
+                            <th>이름</th>
+                            <td>
+                                <input class="ManagerName">
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>연락처</th>
+                            <td>
+                                <input class="ManagerTel">
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>이메일</th>
+                            <td>
+                                <input class="ManagerEmail">
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <button class="btn-confirm">저장</button>
     </div>
+</div>

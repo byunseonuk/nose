@@ -32,7 +32,19 @@ import { AuthService } from '../service/auth.service';
 import {HttpInterceptorModule} from "../lib/ng-http-interceptor/http/module";
 import { DialogService } from '../service/dialog-message/dialog-message.service';
 import { DialogMessage } from '../service/dialog-message/dialog-message.component';
-import { MdDialogModule, MdIconRegistry } from '@angular/material';
+import { MdDialogModule, MdIconRegistry, MaterialModule, MaterialRootModule } from '@angular/material';
+import { ChangePasswordForm } from '../pages/header/change-password-form/change-password-form';
+import { SidenavService } from '../service/sidenav.service';
+import { Header } from '../pages/header/header';
+import { Sidenav } from '../pages/sidenav/sidenav';
+import { LoadingComponent } from '../service/loading/loading.component';
+import {PerfectScrollbarModule, PerfectScrollbarConfigInterface} from 'angular2-perfect-scrollbar';
+
+const PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
+  suppressScrollX: true
+};
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -57,7 +69,12 @@ import { MdDialogModule, MdIconRegistry } from '@angular/material';
     Proinsert,
     Proupdate,
     Signup,
-    DialogMessage
+    DialogMessage,
+    //test
+    Header,
+    ChangePasswordForm,
+    Sidenav,
+    LoadingComponent
   ],
   imports: [
     BrowserModule,
@@ -68,20 +85,25 @@ import { MdDialogModule, MdIconRegistry } from '@angular/material';
     FroalaViewModule,
     ChartsModule,
     HttpInterceptorModule.noOverrideHttp(),
-    MdDialogModule.forRoot()
+    MaterialModule,
+    MaterialRootModule,
+    PerfectScrollbarModule.forRoot(PERFECT_SCROLLBAR_CONFIG),
   ],
   providers: [
     Appservice,
     AuthService,
     DialogService,
     MdIconRegistry,
+    //test
+    SidenavService
   ],
   bootstrap: [AppComponent],
   entryComponents: [
-
     Login,
     Signup,
     DialogMessage,
+    //test
+    ChangePasswordForm
 
   ]
 })

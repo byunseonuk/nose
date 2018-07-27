@@ -10,7 +10,7 @@
  *
  */
 -->
-<div class="login-wrapper">
+<!-- <div class="login-wrapper">
 
   <div class="login-container">
     <div class="content-panel">
@@ -44,4 +44,54 @@
       </form>
     </div>
   </div>
+</div> -->
+<!--
+/**
+ * Created by PHILIP on 10/07/2017
+ * As part of NoseWork
+ *
+ * Copyright (C) Applicat (www.applicat.co.kr) & PHILIP - All Rights Reserved
+ * Unauthorized copying of this file, via any medium is strictly prohibited
+ * Proprietary and confidential
+ * Written by PHILIP <hbnb7894@gmail.com>, 10/07/2017
+ *
+ */
+-->
+<div class="login-wrapper">
+  <div class="login-container">
+    <div class="content-panel">
+  
+      <h2>로그인</h2>
+  
+      <form>
+        <div class="input-panel">
+          <md-input-container>
+            <input mdInput
+                   type="email"
+                   name="email"
+                   placeholder="이메일 주소"
+                   maxlength="256"
+                   [(ngModel)]="loginInfo.identifier"/>
+          </md-input-container>
+        </div>
+        <div class="input-panel">
+          <md-input-container>
+            <input mdInput
+                   type="password"
+                   name="password"
+                   placeholder="비밀번호"
+                   [(ngModel)]="loginInfo.password"
+                   minlength="8"/>
+          </md-input-container>
+        </div>
+        <div class="btn-panel">
+          <button type="submit"
+                  (click)="login()"
+                  [disabled]="!isValidLogin()">
+            <span>로그인</span>
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>   
 </div>

@@ -27,7 +27,28 @@ export class Signup extends OnInit{
       password:'',
       companyname:'',
       companyaddr:'',
-      email:''
+      tel:'',
+      email:'',
+      managerInfo:{
+        manager1:{
+          name:'',
+          tel:'',
+          email:'',
+          phone:''
+        },
+        manager2:{
+          name:'',
+          tel:'',
+          email:'',
+          phone:''
+        },
+        noseworkmanager:{
+          name:'',
+          tel:'',
+          email:'',
+          phone:''
+        }
+      }
       //nickname:'',
       // deliveryInfo: {
       //   addressInfo: {

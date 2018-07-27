@@ -3,22 +3,76 @@
         <div class='managerinfo-header-pannel'>담당자</div>
         <div class='managerinfo-child-pannel'>
             <div class="managerinfo-child">
-                <table class="managerinfo-table">
-                    <tbody>
-                        <tr>
-                            <th>이름</th>
-                            <td>전상기</td>
+                <div class="ManagerPart">정산 담당자</div>
+                <table width="98%" border="0" cellpadding="4" cellspacing="1" bgcolor="#b9b9b9">
+                    <tbody><tr bgcolor="#fafafa" height="30">
+                        <td width="15%" bgcolor="#eeeeee">담당자명 (직함)</td>
+                        <td width="35%">
+                            <input type="text" name="f_managername" size="20" value={{this.appService.user.managerInfo.manager1.name}} class="input" onfocus="jsFocus(this)" onblur="jsBlur(this);"> 
+                        </td>
+                        <td width="15%" bgcolor="#eeeeee">E-Mail</td>
+                        <td width="35%"> 
+                            <input type="text" name="f_managermail" size="30" value={{this.appService.user.managerInfo.manager1.email}} class="input" onfocus="jsFocus(this)" onblur="jsBlur(this);"> 
+                        </td>
+                    </tr>
+                    <tr bgcolor="#fafafa" height="30">
+                        <td bgcolor="#eeeeee">전화번호</td>
+                        <td>
+                            <input type="text" name="f_managertel" size="15" maxlength="15" value={{this.appService.user.managerInfo.manager1.tel}} class="input" onfocus="jsFocus(this)" onblur="jsBlur(this);">&nbsp;("-" 포함)
+                        </td>
+                        <td bgcolor="#eeeeee">휴대전화</td>
+                        <td>
+                            <input type="text" name="f_managermobile" size="15" maxlength="15" value={{this.appService.user.managerInfo.manager1.phone}} class="input" onfocus="jsFocus(this)" onblur="jsBlur(this);">&nbsp;("-" 포함)
+                        </td>
+                    </tr>
+                    </tbody></table>
+
+                    <div class="ManagerPart">물류 담당자</div>
+                    <table width="98%" border="0" cellpadding="4" cellspacing="1" bgcolor="#b9b9b9">
+                        <tbody><tr bgcolor="#fafafa" height="30">
+                            <td width="15%" bgcolor="#eeeeee">담당자명 (직함)</td>
+                            <td width="35%">
+                                <input type="text" name="f_managername" size="20" value={{this.appService.user.managerInfo.manager2.name}} class="input" onfocus="jsFocus(this)" onblur="jsBlur(this);"> 
+                            </td>
+                            <td width="15%" bgcolor="#eeeeee">E-Mail</td>
+                            <td width="35%"> 
+                                <input type="text" name="f_managermail" size="30" value={{this.appService.user.managerInfo.manager2.email}} class="input" onfocus="jsFocus(this)" onblur="jsBlur(this);"> 
+                            </td>
                         </tr>
-                        <tr>
-                            <th>연락처</th>
-                            <td>01039992861</td>
+                        <tr bgcolor="#fafafa" height="30">
+                            <td bgcolor="#eeeeee">전화번호</td>
+                            <td>
+                                <input type="text" name="f_managertel" size="15" maxlength="15" value={{this.appService.user.managerInfo.manager2.tel}} class="input" onfocus="jsFocus(this)" onblur="jsBlur(this);">&nbsp;("-" 포함)
+                            </td>
+                            <td bgcolor="#eeeeee">휴대전화</td>
+                            <td>
+                                <input type="text" name="f_managermobile" size="15" maxlength="15" value={{this.appService.user.managerInfo.manager2.phone}} class="input" onfocus="jsFocus(this)" onblur="jsBlur(this);">&nbsp;("-" 포함)
+                            </td>
                         </tr>
-                        <tr>
-                            <th>이메일</th>
-                            <td>jsg2861</td>
+                    </tbody></table>
+                    <div class="ManagerPart">노즈워크 담당자</div>
+                    <table width="98%" border="0" cellpadding="4" cellspacing="1" bgcolor="#b9b9b9">
+                        <tbody><tr bgcolor="#fafafa" height="30">
+                            <td width="15%" bgcolor="#eeeeee">담당자명 (직함)</td>
+                            <td width="35%">
+                                <input type="text" name="f_managername" size="20" value={{this.appService.user.managerInfo.noseworkmanager.name}} class="input" onfocus="jsFocus(this)" onblur="jsBlur(this);"> 
+                            </td>
+                            <td width="15%" bgcolor="#eeeeee">E-Mail</td>
+                            <td width="35%"> 
+                                <input type="text" name="f_managermail" size="30" value={{this.appService.user.managerInfo.noseworkmanager.email}} class="input" onfocus="jsFocus(this)" onblur="jsBlur(this);"> 
+                            </td>
                         </tr>
-                    </tbody>
-                </table>
+                        <tr bgcolor="#fafafa" height="30">
+                            <td bgcolor="#eeeeee">전화번호</td>
+                            <td>
+                                <input type="text" name="f_managertel" size="15" maxlength="15" value={{this.appService.user.managerInfo.noseworkmanager.tel}} class="input" onfocus="jsFocus(this)" onblur="jsBlur(this);">&nbsp;("-" 포함)
+                            </td>
+                            <td bgcolor="#eeeeee">휴대전화</td>
+                            <td>
+                                <input type="text" name="f_managermobile" size="15" maxlength="15" value={{this.appService.user.managerInfo.noseworkmanager.phone}} class="input" onfocus="jsFocus(this)" onblur="jsBlur(this);">&nbsp;("-" 포함)
+                            </td>
+                        </tr>
+                    </tbody></table>
             </div>
         </div>
     </div>
