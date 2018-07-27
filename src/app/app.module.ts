@@ -30,7 +30,6 @@ import { AuthService } from '../service/auth.service';
 import {HttpInterceptorModule} from "../lib/ng-http-interceptor/http/module";
 import { DialogService } from '../service/dialog-message/dialog-message.service';
 import { DialogMessage } from '../service/dialog-message/dialog-message.component';
-import { MdDialogModule, MdIconRegistry, MaterialRootModule } from '@angular/material';
 import { ProductService } from '../service/product.service';
 import { ProductForm } from '../pages/product/product-form/productform';
 import { NoticeDetail } from '../pages/notice/noticedetail/noticedetail';
@@ -39,6 +38,15 @@ import { NoticeForm } from '../pages/notice/notice-form/notice-form';
 import { OrderFrom } from '../pages/order/order-form/order-form';
 import { DaumMap } from "../pages/daum-map/daum-map";
 import { ProductDetail } from '../pages/product/product-detail/product-detail';
+import { MdDialogModule, MdIconRegistry, MaterialModule, MaterialRootModule } from '@angular/material';
+import { ChangePasswordForm } from '../pages/header/change-password-form/change-password-form';
+import { SidenavService } from '../service/sidenav.service';
+import { Header } from '../pages/header/header';
+import { Sidenav } from '../pages/sidenav/sidenav';
+import { LoadingComponent } from '../service/loading/loading.component';
+
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -65,7 +73,10 @@ import { ProductDetail } from '../pages/product/product-detail/product-detail';
     Signup,
     DialogMessage,
     DaumMap,
-    ProductDetail
+    ProductDetail,
+    ChangePasswordForm,
+    Sidenav,
+    LoadingComponent
   ],
   imports: [
     BrowserModule,
@@ -77,7 +88,8 @@ import { ProductDetail } from '../pages/product/product-detail/product-detail';
     ChartsModule,
     MaterialRootModule,
     HttpInterceptorModule.noOverrideHttp(),
-    MdDialogModule.forRoot()
+    MaterialModule,
+    MaterialRootModule
   ],
   providers: [
     Appservice,
@@ -89,14 +101,15 @@ import { ProductDetail } from '../pages/product/product-detail/product-detail';
   ],
   bootstrap: [AppComponent],
   entryComponents: [
-
     Login,
     Signup,
     DialogMessage,
     ProductForm,
     DaumMap,
     NoticeForm,
-    ProductDetail
+    ProductDetail,
+    ChangePasswordForm
+
   ]
 })
 export class AppModule { }

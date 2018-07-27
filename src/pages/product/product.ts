@@ -18,7 +18,7 @@ export class Product extends OnInit{
   auth;
   order={
     itemList:[],
-    products:[],
+    //products:[],   서버에서 추가해줌
     totalprice:0,
     totalsaleprice:0,
     totaloriginalprice:0
@@ -64,18 +64,16 @@ export class Product extends OnInit{
   cart(product) {
     if (this.nose111<= 0) return;
     let orderitem={
-      productId:null,
-      name:'',
+      product:null,
       quantity:null,
       originalprice:null,
       saleprice:null,
       price:null,
     };
     // products
-    this.order.products.push(product._id);
+    //this.order.products.push(product._id);
     // orderitemlist
-    orderitem.productId = product._id;
-    orderitem.name = product.productname;
+    orderitem.product = product;
     orderitem.quantity = this.nose111;
     orderitem.originalprice = product.price*this.nose111;
     orderitem.saleprice = orderitem.originalprice*0.1;
@@ -97,7 +95,7 @@ export class Product extends OnInit{
     this.order.totaloriginalprice-=this.order.itemList[idx].originalprice;
     this.order.totalsaleprice-=this.order.itemList[idx].saleprice;
     this.order.itemList.splice(idx, 1);
-    this.order.products.splice(idx,1);
+    //this.order.products.splice(idx,1);
     
   }
   

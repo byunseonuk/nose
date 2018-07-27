@@ -16,6 +16,7 @@ import {MdDialog, MdDialogConfig, MdDialogRef} from "@angular/material";
 export class OrderFrom extends OnInit{
   config: MdDialogConfig = new MdDialogConfig();
   dialogDaumMapRef: MdDialogRef<DaumMap>;
+  invoiceId;
   invoice={
     itemList:[],
     paymentType:'',
@@ -53,7 +54,10 @@ export class OrderFrom extends OnInit{
   }
 
   submit(){
-
+    if(this.invoiceId)
+      this.create();
+    else 
+      this.update();
   }
   openDaumMapForm(){
     this.dialogService.daumMapModal(this.config);
@@ -76,6 +80,13 @@ export class OrderFrom extends OnInit{
       });
   }
 
+  create(){
+    
+  }
+
+  update(){
+
+  }
   // searchAddress() {
   //   new daum.Postcode({
   //     oncomplete: function(data) :any{

@@ -1,9 +1,54 @@
 import { Injectable } from '@angular/core';
 import { STRING_TYPE } from '@angular/compiler/src/output/output_ast';
+import { EventEmitter } from '@angular/common/src/facade/async';
 @Injectable()
 export class Appservice {
   constructor() { }
-  //고객 상품 주문
+
+  get user(): any {
+    let user = localStorage.getItem('nosework_user');
+
+    try {
+      user = JSON.parse(user);
+      return user;
+    } catch (e) {
+      return null;
+    }
+  };
+
+  set user(_user) {
+    if (_user)
+      localStorage.setItem('nosework_user', JSON.stringify(_user));
+    else
+      localStorage.removeItem('nosework_user');
+  };
+
+  get token(): any {
+    let token = localStorage.getItem('nosework_token');
+
+    try {
+      token = JSON.parse(token);
+      return token;
+    } catch (e) {
+      return null;
+    }
+  };
+
+  set token(_token: any) {
+    if (_token)
+      localStorage.setItem('nosework_token', JSON.stringify(_token));
+    else
+      localStorage.removeItem('nosework_token');
+  };
+
+  appEvent: EventEmitter<any> = new EventEmitter();
+
+  sendEvent(eventName: string, data?: any) {
+    let eventData: {name: string, data?: any} = {name: eventName};
+    if (data) eventData.data = data;
+    this.appEvent.emit(eventData);
+  }
+
   setorderList(orderList){
     if(orderList)
       localStorage.setItem('orderlist',JSON.stringify(orderList));
