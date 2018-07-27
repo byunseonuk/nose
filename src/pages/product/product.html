@@ -1,60 +1,74 @@
 <div class="container">
   <div class="sidenav">
     <ul class="sidenavlist">
-      <li (click)="showpro(1)">강아지 장난감</li>
-      <li (click)="showpro(2)">고양이 장난감</li>
-      <li (click)="showpro(3)">강아지 사료</li>
-      <li (click)="showpro(4)">고양이 사료</li>
-      <li *ngIf="auth" routerLink="/proinsert">상품추가</li>
+      <li (click)="showpro('puppytoy')">강아지 장난감</li>
+      <li (click)="showpro('cattoy')">고양이 장난감</li>
+      <li (click)="showpro('puppyfood')">강아지 사료</li>
+      <li (click)="showpro('catfood')">고양이 사료</li>
+      <li *ngIf="auth" (click)="openProductFormModel()">상품추가</li>
     </ul>
   </div>
   <div class="productcontainer" *ngIf="displaylist">
     <div>
       <div class="productlist">
-        <h2 *ngIf="nowcategory===1">강아지 장난감</h2>
-        <h2 *ngIf="nowcategory===2">고양이 장난감</h2>
-        <h2 *ngIf="nowcategory===3">강아지 사료</h2>
-        <h2 *ngIf="nowcategory===4">고양이 사료</h2>
-        <div *ngFor="let product of products;">
-          <div *ngIf="nowcategory===product.category"
-              class="eachproduct">
-            <div class="product-info">
-              <div><span> 상품명 : {{product.name}} </span></div>
-              <div><span> 가격   : {{product.price}} </span></div>
-            </div>
-            <div class="product-order-num"
-                *ngIf="!auth">
-              <span>수량</span><br>
-              <input type="text" placeholder="0" (keyup)="nose11($event)"/>
-            </div>
-            <div class="detail-cart-btn" *ngIf="!auth">
-              <button (click)="display_modal(product)">상세정보</button>
-              <button (click)="test(product.name,product.price)">담기</button>
-            </div>
-            <div *ngIf="auth">
-              <button (click)="update(product)">수정</button>
-            </div>
-          </div>  
+        <h2 *ngIf="nowcategory==='puppytoy'">강아지 장난감</h2>
+        <h2 *ngIf="nowcategory==='cattoy'">고양이 장난감</h2>
+        <h2 *ngIf="nowcategory==='puppyfood'">강아지 사료</h2>
+        <h2 *ngIf="nowcategory==='catfood'">고양이 사료</h2>
+        <div *ngIf="options.rows">
+          <div *ngFor="let product of options.rows;">
+            <div *ngIf="nowcategory===product.category"
+                class="eachproduct">
+              <div class="product-info">
+                <div><span> 상품명 : {{product.productname}} </span></div>
+                <div><span> 가격   : {{product.price}} </span></div>
+              </div>
+
+              <div class="product-order-num"
+                  *ngIf="!auth">
+                <span>수량</span><br>
+                <input type="number" min="0" placeholder="0" (keyup)="nose11($event)"/>
+              </div>
+
+              <div class="detail-cart-btn" *ngIf="!auth">
+                <button (click)="openDetailModal(product)">상세정보</button>
+                <button (click)="cart(product)">담기</button>
+              </div>
+
+              <div *ngIf="auth">
+                <button (click)="openProductFormModel(product)">수정</button>
+                <button (click)="productRemove(product)" >삭제</button>
+              </div>
+            </div>  
+          </div>
+        </div>
+
+        <div *ngIf="!options.rows">
+          <h2>등록된 상품이 없습니다.</h2>
         </div>
       </div>
     </div>
   </div>
+  
+
+
   <div id="ordernav" *ngIf="!auth">
     <p> </p>
-    <div *ngFor="let nose of nose1; let idx = index"
+    <div *ngFor="let orderitem of order.itemList; let idx = index"
         class="orderproduct" >
-      <span>{{nose.name}} : {{nose.amount}} 개</span><button (click)="del_order(idx)">X</button>
+      <span>{{orderitem.product.prodcutname}} : {{orderitem.quantity}} 개</span><button (click)="del_order(idx)">X</button>
     </div>
     <div>
-      <span>총 금액: {{totalprice}}</span>
+      <span>총 금액: {{order.totalprice}}</span>
     </div>
     <div>
-      <button (click)="pay()" class="pay-btn-class">결제하기</button>
+      <button (click)="pay()" class="pay-btn-class" routerLink="/order-form">결제하기</button>
     </div>
   </div>
 </div>
-<!-- <proupdate [ngStyle]="{'display': displayupdate ? 'block':'none'}" [updatepro]="updatepro"></proupdate> -->
-<proupdate *ngIf="displayupdate" [updatepro]="updatepro"></proupdate>
+
+
+<!--  -->
 <div id="detail-modal" [ngStyle]="{'display': displaymodal ? 'block' : 'none'}">
   <div class="modal-container">
     <div>

@@ -4,7 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { Login } from '../pages/login/login'
 import { AppComponent } from './app.component';
-import { Noticelist } from '../pages/noticelist/noticelist';
+
 import { Notice } from '../pages/notice/notice';
 import { Product } from '../pages/product/product';
 import { routing } from './app.routes';
@@ -12,7 +12,7 @@ import { Orderinfo } from '../pages/order/orderinfo';
 import { Top } from '../pages/top/top';
 import { Ordermanage } from '../pages/ordermanage/ordermanage';
 import { Ordercheck } from '../pages/ordercheck/ordercheck';
-import { Writenotice } from '../pages/notice/writenotice/writenotice';
+
 import { Refundrequest } from '../pages/order/refundrequest/refundrequest';
 import { FroalaEditorModule, FroalaViewModule } from 'angular2-froala-wysiwyg';
 import { Appservice } from '../service/app.service';
@@ -25,26 +25,32 @@ import { AuthMypage } from '../pages/board/mypage/authmypage/authmypage';
 import { ManagerPage } from '../pages/board/ManagerPage/managerpage';
 import {Request} from '../pages/servicecenter/request/request';
 import {ChartsModule} from 'ng2-charts';
-import { Proinsert } from '../pages/product/proinsert/proinsert';
-import { Proupdate} from '../pages/product/proupdate/proupdate';
 import { Signup } from '../pages/signup/signup';
 import { AuthService } from '../service/auth.service';
 import {HttpInterceptorModule} from "../lib/ng-http-interceptor/http/module";
 import { DialogService } from '../service/dialog-message/dialog-message.service';
 import { DialogMessage } from '../service/dialog-message/dialog-message.component';
-import { MdDialogModule, MdIconRegistry } from '@angular/material';
+import { MdDialogModule, MdIconRegistry, MaterialRootModule } from '@angular/material';
+import { ProductService } from '../service/product.service';
+import { ProductForm } from '../pages/product/product-form/productform';
+import { NoticeDetail } from '../pages/notice/noticedetail/noticedetail';
+import { NoticeService } from '../service/notice.service';
+import { NoticeForm } from '../pages/notice/notice-form/notice-form';
+import { OrderFrom } from '../pages/order/order-form/order-form';
+import { DaumMap } from "../pages/daum-map/daum-map";
+import { ProductDetail } from '../pages/product/product-detail/product-detail';
 @NgModule({
   declarations: [
     AppComponent,
     Login,
-    Noticelist,
     Notice,
+    NoticeDetail,
+    NoticeForm,
     Product,
     Orderinfo,
     Top,
     Ordermanage,
     Ordercheck,
-    Writenotice,
     Refundrequest,
     Board,
     Mypage,
@@ -52,12 +58,14 @@ import { MdDialogModule, MdIconRegistry } from '@angular/material';
     SalesStatus,
     ServiceCenter,
     Request,
+    OrderFrom,
     AuthMypage,
     ManagerPage,
-    Proinsert,
-    Proupdate,
+    ProductForm,
     Signup,
-    DialogMessage
+    DialogMessage,
+    DaumMap,
+    ProductDetail
   ],
   imports: [
     BrowserModule,
@@ -67,6 +75,7 @@ import { MdDialogModule, MdIconRegistry } from '@angular/material';
     FroalaEditorModule,
     FroalaViewModule,
     ChartsModule,
+    MaterialRootModule,
     HttpInterceptorModule.noOverrideHttp(),
     MdDialogModule.forRoot()
   ],
@@ -75,6 +84,8 @@ import { MdDialogModule, MdIconRegistry } from '@angular/material';
     AuthService,
     DialogService,
     MdIconRegistry,
+    ProductService,
+    NoticeService
   ],
   bootstrap: [AppComponent],
   entryComponents: [
@@ -82,7 +93,10 @@ import { MdDialogModule, MdIconRegistry } from '@angular/material';
     Login,
     Signup,
     DialogMessage,
-
+    ProductForm,
+    DaumMap,
+    NoticeForm,
+    ProductDetail
   ]
 })
 export class AppModule { }

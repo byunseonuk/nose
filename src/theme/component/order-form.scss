@@ -1,0 +1,23 @@
+order-form{
+  .container{
+    width: 100%;
+    margin-left: 100px;
+    margin-right: 100px;
+    .head-panel{
+      display: flex;
+      text-align: center;
+    }
+    .body-panel{
+      .item-panel {
+        display: flex;
+        text-align: center;
+      }
+    }
+    .total-panel {
+      display: flex;
+      .total-row {
+        
+      }
+    }
+  }
+}

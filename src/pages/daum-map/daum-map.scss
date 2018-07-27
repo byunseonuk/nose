@@ -1,0 +1,183 @@
+/**
+ * Created by PHILIP on 10/07/2017
+ * As part of NoseWork
+ *
+ * Copyright (C) Applicat (www.applicat.co.kr) & PHILIP - All Rights Reserved
+ * Unauthorized copying of this file, via any medium is strictly prohibited
+ * Proprietary and confidential
+ * Written by PHILIP <hbnb7894@gmail.com>, 10/07/2017
+ *
+ */
+  /* daum-map-container */
+  .daum-map-container{
+
+    /* form-panel */
+    .form-panel{
+      position: relative;
+
+      /* label-panel */
+      .label-panel{
+        position: relative;
+       
+        width: 100%;
+        height: 50px;
+        margin-top: 35px;
+        text-align: center;
+        > h2{
+          font-size: 30px;
+          font-weight: 100;
+        
+        }
+
+        /* btn-close */
+        .btn-close{
+          position: absolute;
+          top: 0px;
+          right: 40px;
+          line-height: 0;
+          cursor: pointer;
+          &:hover{
+            opacity: 0.7;
+          }
+          i{
+            font-size: 20px;
+            color: gray;
+          }
+        }
+        /* // btn-close */
+
+      }
+      /* // label-panel */
+
+      /* content-panel */
+      .content-panel{
+        margin-top: 30px;
+        > h3{
+          font-size: 20px;
+     
+          text-align: center;
+        }
+
+        /* search-panel */
+        .search-panel{
+          position: relative;
+          width: 450px;
+          margin: 40px auto 0;
+          form{
+            width: 100%;
+            /* input-panel */
+            .input-panel{
+              width: 100%;
+              md-input-container {
+                width: 100%;
+                input {
+                  outline: none;
+                  color: #828182;
+                  &::-webkit-input-placeholder { /* WebKit browsers */
+                    color: transparent;
+                  }
+                  &:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+                    color: transparent;
+                  }
+                  &::-moz-placeholder { /* Mozilla Firefox 19+ */
+                    color: transparent;
+                  }
+                  &:-ms-input-placeholder { /* Internet Explorer 10+ */
+                    color: transparent;
+                  }
+                }
+                .mat-input-placeholder.mat-float.mat-focused, .mat-input-placeholder.mat-float:not(.mat-empty) {
+                  padding-bottom: 15px;
+                }
+                .mat-input-placeholder.mat-focused {
+                 
+                }
+                .mat-input-underline {
+                  margin-top: 10px;
+                  .mat-input-ripple.mat-focused {
+                    opacity: 0;
+                  }
+                }
+              }
+            }
+            /* // input-panel */
+          }
+
+          /* search-result-panel */
+          .search-result-panel{
+            z-index: 10;
+            overflow-x: hidden;
+            overflow-y: scroll;
+            position: absolute;
+            left: 0;
+            top: 40px;
+            width: 100%;
+            height: 300px;
+            border: 1px solid gray;
+            //box-shadow: 0 5px 20px rgba(200, 200, 200, 0.4);
+        
+
+            /* item-panel */
+            .item-panel{
+             
+              width: 100%;
+              height: 60px;
+              padding: 20px;
+           
+              cursor: pointer;
+              i{
+                font-size: 20px;
+             
+              }
+              span{
+                overflow: hidden;
+                margin-left: 10px;
+                font-size: 14px;
+            
+                text-overflow: ellipsis;
+                white-space: nowrap;
+              }
+              &:last-child{
+                border-bottom: none;
+              }
+              &:hover{
+
+              }
+            }
+            /* // item-panel */
+
+          }
+          /* // search-result-panel */
+
+        }
+        /* // search-panel */
+
+      }
+      /* // content-panel */
+
+      /* btn-panel */
+      .btn-panel{
+        position: absolute;
+        left: 0;
+        bottom: -170%;
+        width: 100%;
+      
+        button{
+         
+          width: 320px;
+          height: 60px;
+          font-size: 20px;
+
+          cursor: pointer;
+          &:hover{
+            opacity: 0.7;
+          }
+        }
+      }
+      /* // btn-panel */
+
+    }
+    /* // form-panel */
+
+  }
+  /* // daum-map-container */

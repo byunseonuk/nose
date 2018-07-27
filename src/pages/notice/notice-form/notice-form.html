@@ -1,0 +1,11 @@
+<div class="container">
+    <div class="wrapper">
+      <div class="noticetitle">
+          <label>제목</label>
+          <input mdInput type="text" placeholder="제목" [(ngModel)]="notice.title"/>
+      </div>
+      <div [froalaEditor] [(froalaModel)]="notice.contents"></div>
+      <button (click)="complete()">완료</button>
+      <button (click)="dismiss()">취소</button>
+    </div>
+  </div>

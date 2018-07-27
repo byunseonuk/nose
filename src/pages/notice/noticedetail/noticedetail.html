@@ -1,0 +1,14 @@
+<div id="notice-board-wrapper">
+  <div class="head">
+    <h2>{{notice.title}}</h2>
+    <h4>{{notice.createdAt | date:"yyyy.MM.dd"}}</h4>
+  </div>
+  <div class="notice-board-container">
+    <div class="contents-wrap" id="contents">     
+    </div>
+    <div class="bottom-btn">
+      <button routerLink="/notice">목록으로</button>
+      <button *ngIf="auth" (click)="openNoticeFormModel(notice)">수정</button>
+    </div>
+  </div>
+</div>

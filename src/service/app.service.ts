@@ -3,7 +3,7 @@ import { STRING_TYPE } from '@angular/compiler/src/output/output_ast';
 @Injectable()
 export class Appservice {
   constructor() { }
-
+  //고객 상품 주문
   setorderList(orderList){
     if(orderList)
       localStorage.setItem('orderlist',JSON.stringify(orderList));
@@ -16,6 +16,7 @@ export class Appservice {
       return null;
     }
   }
+
   setnotice(notice){
     if(notice)
       localStorage.setItem('notice',JSON.stringify(notice));
@@ -81,5 +82,18 @@ export class Appservice {
     }
   }
 
+  setplace(place){
+    if(place)
+      localStorage.setItem('writenotice',JSON.stringify(place));
+  }
+
+  getplace(){
+    let place = localStorage.getItem('place');
+    try{
+      return JSON.parse(place);
+    } catch(e){
+      return null;
+    }
+  }
 
 }

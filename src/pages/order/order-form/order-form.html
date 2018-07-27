@@ -1,0 +1,100 @@
+<div class="container">
+  <div>
+    <h3>주문결제</h3>
+  </div>
+
+  <div class="head-panel">
+    <div [style.width]="'30%'">상품명</div>
+    <div [style.width]="'10%'">수량</div>
+    <div [style.width]="'15%'">금액</div>
+    <div [style.width]="'15%'">할인금액</div>
+    <div [style.width]="'20%'">할인적용금액</div>
+  </div>
+
+  <div class="body-panel">
+    <div *ngFor="let orderitem of invoice.itemList;" class="item-panel">
+        <div [style.width]="'30%'">{{orderitem.name}}</div>
+        <div [style.width]="'10%'">{{orderitem.quantity}}</div>
+        <div [style.width]="'15%'">{{orderitem.originalprice}}</div>
+        <div [style.width]="'15%'">{{orderitem.saleprice}}</div>
+        <div [style.width]="'20%'">{{orderitem.price}}</div>
+    </div>
+
+    <div class="total-panel">
+      <div [style.width]="'30%'">
+        <div>총 금액</div>
+        <div>{{invoice.totaloriginalprice}}</div>       
+      </div>
+      
+      <div [style.width]="'30%'">
+        <div>총 할인 금액</div>
+        <div>{{invoice.totalsaleprice}}</div>
+      </div>
+ 
+      <div [style.width]="'30%'">
+        <div>총 할인 적용 금액</div>
+        <div>{{invoice.totalprice}}</div>
+      </div>
+    </div>
+  </div>
+  <div>
+    <form>
+      <div class="address-panel">
+        <div class="search-address-panel">
+          <p>주소</p>
+          <div>
+            <input type="text"
+                    name="address"
+                    readonly
+                    placeholder="검색 주소"
+                    [(ngModel)]="address"
+                    id="ad"
+                    value="text"
+                    #ad>
+            <button class="btn-findAddress"
+                    type="button"
+                    (click)="openDaumMapForm()">
+              <span>주소 찾기</span>
+            </button>
+          </div>
+          <input type="text"
+                  name="detailAddress"
+                  placeholder="상세 주소"
+                  [(ngModel)]="deliveryInfo.addressInfo.detailAddress">
+        </div>
+
+        <div>
+          <p>전화번호</p>
+          <input type="phone"
+                  name="phone"
+                  placeholder="'-'없이 입력해주세요."
+                  [(ngModel)]="deliveryInfo.phone">
+        </div>
+
+        <div>
+          <p>이름</p>
+          <input type="text"
+                  name="name"
+                  placeholder="받으시는 분 성함을 입력해주세요."
+                  [(ngModel)]="deliveryInfo.name">
+        </div>
+      </div>
+    </form>
+  </div>
+  <div >
+    <input type="radio" name="paymentType" value="bank" [(ngModel)]="invoice.paymentType"/>
+      무통장입금
+    <input type="radio" name="paymentType" value="card" [(ngModel)]="invoice.paymentType"/>
+      신용카드
+    <input type="radio" name="paymentType" value="tans" [(ngModel)]="invoice.paymentType"/>
+      계좌이체
+  </div>
+
+  <div>
+
+  </div>
+
+  <div>
+    <button type="submit" (click)="submit()">결제하기</button>
+  </div>
+</div>

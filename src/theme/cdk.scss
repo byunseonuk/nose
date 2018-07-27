@@ -1,0 +1,32 @@
+.cdk-global-overlay-wrapper, .cdk-overlay-container {
+  pointer-events: none;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%
+}
+
+.cdk-overlay-container {
+  position: fixed;
+  z-index: 1000
+}
+
+.cdk-global-overlay-wrapper {
+  display: flex;
+  position: absolute;
+  z-index: 1000
+}
+
+.cdk-overlay-pane {
+  position: absolute !important;
+  pointer-events: auto;
+  box-sizing: border-box;
+  z-index: 1000;
+  top:90px !important;
+  max-width: calc(100%);
+  max-height: calc(100%);
+  //&.full-screen{
+  //  max-width: none;
+  //  max-height: none;
+  //}
+}

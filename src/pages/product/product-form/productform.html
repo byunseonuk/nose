@@ -1,0 +1,108 @@
+<div class="container">
+  <div class="wrapper">
+    <div>
+      <h2>상품추가</h2>
+    </div>
+    <form>
+      <div class="each-w">
+        <div class="label-w">
+          <label>상품명</label>
+        </div>
+        <div class="input-w">  
+          <input type="text" 
+                [(ngModel)]="product.productname" 
+                name="productname"
+                autocomplete=off/>
+        </div>
+      </div>
+
+      <div class="each-w">
+        <div class="label-w">
+          <label>카테고리</label>
+        </div>
+        <div class="input-w">  
+          <select [(ngModel)]="product.category" 
+                  (change)="test()"
+                  [ngModelOptions]="{standalone: true}">
+            <option *ngFor="let item of categorylist;" [ngValue]="item.cid">{{item.cname}}</option>
+          </select>
+        </div>
+      </div>
+      
+      <div class="each-w">
+        <div class="label-w">
+          <label>가격</label>
+        </div>
+        <div class="input-w">
+          <input type="number" 
+     
+                [(ngModel)]="product.price" 
+                name="price"
+                autocomplete=off/>
+        </div>
+      </div>
+
+      <div class="each-w">
+        <div class="label-w">
+          <label>간단한 설명</label>
+        </div>
+        <div class="input-w">
+          <input type="text" 
+       
+                [(ngModel)]="product.summary" 
+                name="summary"
+                autocomplete=off/>
+        </div>
+      </div>
+          
+      <div class="each-w">
+        <div class="label-w">
+          <label>순서</label>
+        </div>
+        <div class="input-w">
+          <input type="number" 
+        
+                [(ngModel)]="product.displayOrder" 
+                name="displayOrder"
+                autocomplete=off/>
+        </div>
+      </div>
+      
+
+      <div class="each-w" *ngIf="productId">
+        <div class="label-w">
+          <label>품절여부</label>
+        </div>
+        <div>
+          품절
+
+          <input type="radio" 
+                [(ngModel)]="product.soldOut" 
+                name="soldOut"
+                value=true
+                autocomplete=off/>
+          재고있음
+          <input type="radio" 
+                [(ngModel)]="product.soldOut" 
+                name="soldOut"
+                value=false
+                checked="checked"
+                autocomplete=off/>
+        </div>
+      </div>
+
+      <div class="each-w">
+        <div class="label-w">
+          <label>상세내용</label>
+        </div>
+        <div class="input-w">
+          <textarea [(ngModel)]="product.detail" 
+                    name="detail"
+                    autocomplete=off></textarea>
+        </div>
+      </div>
+      <button type="submit" (click)="submit()" routerLink="/product">완료</button>
+      <button type="button" (click)="dismiss('cancel')">취소</button>
+    </form>
+  </div>
+</div>

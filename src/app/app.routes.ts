@@ -17,38 +17,53 @@ import {RouterModule} from "@angular/router";
 import { AppComponent } from "./app.component";
 import { Product } from "../pages/product/product";
 import { Notice } from "../pages/notice/notice";
-import { Noticelist } from "../pages/noticelist/noticelist";
 import { Orderinfo } from "../pages/order/orderinfo";
 import { Login } from "../pages/login/login";
 import { Ordermanage } from "../pages/ordermanage/ordermanage";
 import { Ordercheck } from "../pages/ordercheck/ordercheck";
-import { Writenotice } from "../pages/notice/writenotice/writenotice";
+import { NoticeForm } from "../pages/notice/notice-form/notice-form";
 import { Refundrequest } from "../pages/order/refundrequest/refundrequest";
 import { ServiceCenter } from "../pages/servicecenter/servicecenter";
 import { Board } from "../pages/board/board";
-import { Proinsert } from '../pages/product/proinsert/proinsert';
-import { Proupdate} from '../pages/product/proupdate/proupdate';
 import { Signup } from '../pages/signup/signup';
+import { NoticeDetail } from "../pages/notice/noticedetail/noticedetail";
+import { ProductForm } from "../pages/product/product-form/productform";
+import { OrderFrom } from "../pages/order/order-form/order-form";
 export const routes = [
   {
     path: '',
-    redirectTo: '/noticelist',
+    redirectTo: '/notice',
     pathMatch: 'full',
   },
   {
     label: '공지사항자세히',
+    path: 'noticedetail',
+    component: NoticeDetail
+  },
+  {
+    label: '공지사항',
     path: 'notice',
     component: Notice
   },
   {
-    label: '공지사항',
-    path: 'noticelist',
-    component: Noticelist
+    label: '공지사항작성',
+    path: 'notice-form',
+    component: NoticeForm
   },
   {
     label: '상품',
     path: 'product',
     component: Product
+  },
+  {
+    label: '상품등록',
+    path: 'productform',
+    component: ProductForm
+  },
+  {
+    label: '주문/배송 관리',
+    path: 'order-form',
+    component: OrderFrom
   },
   {
     label: '주문/배송 관리',
@@ -71,11 +86,6 @@ export const routes = [
     component: Login
   },
   {
-    label: '공지사항작성',
-    path: 'writenotice',
-    component: Writenotice
-  },
-  {
     label: '반품/환불요청',
     path: 'refundrequest',
     component: Refundrequest
@@ -89,16 +99,6 @@ export const routes = [
     label: '고객센터',
     path: 'servicecenter',
     component: ServiceCenter
-  },
-  {
-    label: '상품추가',
-    path: 'proinsert',
-    component: Proinsert
-  },
-  {
-    label: '상품수정',
-    path: 'proupdate',
-    component: Proupdate
   },
   {
     label: '유저생성',

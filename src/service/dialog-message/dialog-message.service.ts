@@ -61,6 +61,28 @@ export class DialogService {
     config['width'] = '900px';
     config['height'] = '820px';
   }
+  daumMapModal(config){
+    config.disableClose = false;
+    config['width'] = '500px';
+    config['height'] = '620px';
+  }
+  formModal(config) {
+    config.disableClose = false;
+    config['width'] = '900px';
+    config['height'] = '620px';
+  }
+
+  productDetailModal(config) {
+    config.disableClose = false;
+    config['width'] = '400px';
+    config['height'] = '400px';
+  }
+
+  noticeformModal(config){
+    config.disableClose = false;
+    config['width'] = '100%';
+    config['height'] = '720px';
+  }
 
   calcContentSize() {
     let width = '100%';

@@ -3,8 +3,7 @@ import { Log } from '../../tmpdata/login';
 import { Appservice } from '../../service/app.service';
 @Component({
   selector: 'login',
-  templateUrl: './login.html',
-  styleUrls: ['./login.scss']
+  templateUrl: './login.html'
 })
  
 export class Login extends OnInit{

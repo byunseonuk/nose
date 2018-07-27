@@ -5,7 +5,7 @@ import { Appservice } from '../../../service/app.service';
 @Component({
   selector: 'refundrequest',
   templateUrl: './refundrequest.html',
-  styleUrls: ['../orderinfo.scss']
+  //styleUrls: ['../orderinfo.scss']
 })
  
 export class Refundrequest extends OnInit {

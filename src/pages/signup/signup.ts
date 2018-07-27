@@ -7,7 +7,7 @@ declare var _;
 @Component({
   selector: 'signup',
   templateUrl: './signup.html',
-  styleUrls: ['./signup.scss']
+  //styleUrls: ['./signup.scss']
 })
  
 export class Signup extends OnInit{

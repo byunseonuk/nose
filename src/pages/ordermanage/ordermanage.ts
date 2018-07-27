@@ -5,7 +5,7 @@ import { Appservice } from '../../service/app.service';
 @Component({
   selector: 'ordermanage',
   templateUrl: './ordermanage.html',
-  styleUrls: ['./ordermanage.scss']
+  //styleUrls: ['./ordermanage.scss']
 })
  
 export class Ordermanage{

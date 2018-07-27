@@ -1,0 +1,26 @@
+productform{
+  .container{
+    width: 100%;
+    .wrapper {
+      h2 {
+        text-align: center;
+      }
+      .each-w {
+        display: flex;
+        padding: 20px;
+        padding-left: 30%;
+        .label-w {
+          text-align: left;
+          width: 10%;
+        }
+        .input-w {
+          width: 60%;
+          input {
+            width: 300px;
+            height: 20px;
+          }
+        }
+      }
+    }
+  }
+}

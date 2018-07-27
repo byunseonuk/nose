@@ -1,17 +1,53 @@
+import {MdDialog, MdDialogConfig, MdDialogRef} from "@angular/material";
 import { Component, OnInit } from '@angular/core';
 import { TPS } from '../../tmpdata/tmpproductdata';
 import { OrderProduct } from '../../tmpdata/orderproduct';
 import { OrdercheckF } from '../../tmpdata/ordercheckf';
-
+import {ProductForm} from '../product/product-form/productform';
 import { Appservice } from '../../service/app.service';
+import { ProductService } from '../../service/product.service';
+import {DialogService} from "../../service/dialog-message/dialog-message.service";
+import { ProductDetail } from "./product-detail/product-detail";
+
 @Component({
   selector: 'product',
-  templateUrl: './product.html',
-  styleUrls: ['./product.scss']
+  templateUrl: './product.html'
 })
 
 export class Product extends OnInit{
-  constructor(private appservice:Appservice){
+  auth;
+  order={
+    itemList:[],
+    products:[],
+    totalprice:0,
+    totalsaleprice:0,
+    totaloriginalprice:0
+  }
+  
+
+  products;
+  nose111 = 0
+
+  
+  detail;
+  displaymodal=false;
+  displaylist=true;
+  nowcategory='puppytoy';
+  // 
+  dialogProductRef: MdDialogRef<ProductForm>;
+  config: MdDialogConfig = new MdDialogConfig();
+  dialogProductDetailRef: MdDialogRef<ProductDetail>;
+  options = {
+    rows: [],
+    selected: null,
+    limit: 8,
+    count: 0,
+    page: 1,
+  };
+  constructor(private mdDialog: MdDialog,
+              private appservice:Appservice,
+              private productservice:ProductService,
+              private dialogService:DialogService){
     super();
   }
   ngOnInit(){
@@ -20,76 +56,147 @@ export class Product extends OnInit{
     }else {
       this.auth= false;
     }
-    this.products=TPS;
-    //정렬 순위 높은순 오름차순
-    this.products.sort((left,right)=>{
-      if(left.order<right.order) return -1;
-      else if(left.order>right.order) return 1;
-      else return 0;
-    });
+    this.showpro(this.nowcategory);
+    this.order = (this.appservice.getorderlist()!=null)?this.appservice.getorderlist():this.order;
+  }
+  
+  //
+  cart(product) {
+    if (this.nose111<= 0) return;
+    let orderitem={
+      productId:null,
+      name:'',
+      quantity:null,
+      originalprice:null,
+      saleprice:null,
+      price:null,
+    };
+    // products
+    this.order.products.push(product._id);
+    // orderitemlist
+    orderitem.productId = product._id;
+    orderitem.name = product.productname;
+    orderitem.quantity = this.nose111;
+    orderitem.originalprice = product.price*this.nose111;
+    orderitem.saleprice = orderitem.originalprice*0.1;
+    orderitem.price= orderitem.originalprice - orderitem.saleprice ;
+    
+    this.order.itemList.push(orderitem);
+    this.order.totaloriginalprice += orderitem.originalprice;
+    this.order.totalsaleprice += orderitem.saleprice;
+    this.order.totalprice += orderitem.price;
 
   }
-  auth;
-  nose1 = [];
-  order:OrderProduct;
-  products;
-  nose111 = '';
-  ordercheck:OrdercheckF;
-  totalprice=0;
-  detail;
-  displaymodal=false;
-  displaylist=true;
-  displayupdate=false;
-  nowcategory=1;
-  updatepro;
-  test(name, price) {
-    if (this.nose111 == '') return;
-    this.order = new OrderProduct();
-    this.order.name = name;
-    this.order.amount = parseInt(this.nose111);
-    this.order.price = price;
-    this.totalprice+= price*parseInt(this.nose111);
-    this.nose1.push(this.order);
 
-  }
   nose11(event: any) {
     this.nose111 = event.target.value;
   }
+
   del_order(idx: any) {
-    this.totalprice-=this.nose1[idx].price*this.nose1[idx].amount;
-    this.nose1.splice(idx, 1);
+    this.order.totalprice-=this.order.itemList[idx].price;
+    this.order.totaloriginalprice-=this.order.itemList[idx].originalprice;
+    this.order.totalsaleprice-=this.order.itemList[idx].saleprice;
+    this.order.itemList.splice(idx, 1);
+    this.order.products.splice(idx,1);
     
   }
+  
   display_modal(detailpro){
     this.detail = detailpro;
     this.displaymodal = true;
     console.log(detailpro);
     console.log(typeof(detailpro));
   }
+
   close_modal(){
     this.displaymodal=false;
   }
+
   pay(){
-    this.ordercheck = new OrdercheckF;
-    this.ordercheck.name='업체1';
-    this.ordercheck.orderp=this.nose1;
-    this.ordercheck.paymentdate= new Date().toLocaleDateString();
-    this.ordercheck.paymentstate='입금전';
-    this.ordercheck.totalprice = 1000000;
-    this.appservice.setordercheck(this.ordercheck);
-    this.appservice.setorderList(this.nose1);
-    
+    this.appservice.setorderList(this.order);
   }
+
   showpro(ca){
     this.nowcategory=ca;
+    console.log(ca);
+    console.log (typeof(ca));
     this.displaylist=true;
-    this.displayupdate=false;
+    let skip = 0;
+    let params: any = {
+      query: {isDeleted: false,
+              category: ca
+      },
+      limit: this.options.limit,
+      skip: skip,
+      sort: {displayOrder: 1}
+    };
+    this.productservice.findList(params)
+    .subscribe(
+      (productsWrapper) => {
+
+        this.options['rows'] = productsWrapper['shopProducts'];
+        this.options['count'] = productsWrapper['total'];
+      },
+      (err) => {
+        let subTitle = '';
+        switch (err.status) {
+          case 500:
+            subTitle = '서버에러';
+            break;
+          default:
+            subTitle = '잘못된 요청입니다.';
+            break;
+        }
+      }
+    );
   }
-  update(product){
-    this.updatepro = product;
-    console.log(product);
-    this.displaylist=false;
-    this.displayupdate=true;
+
+  openDetailModal(product){
+    this.dialogService.productDetailModal(this.config);
+    this.config.disableClose = true;
+
+    this.dialogProductDetailRef = this.mdDialog.open(ProductDetail, this.config);
+    if (product)
+      this.dialogProductDetailRef.componentInstance.product = product;
+
+    this.dialogProductDetailRef.afterClosed()
+      .subscribe((result) => {
+        
+      });
+  }
+  openProductFormModel(product?) {
+    this.dialogService.formModal(this.config);
+    this.config.disableClose = true;
+
+    this.dialogProductRef = this.mdDialog.open(ProductForm, this.config);
+    if (product)
+      this.dialogProductRef.componentInstance.productId = product._id;
+
+    this.dialogProductRef.afterClosed()
+      .subscribe((result) => {
+        if(result && result.category){
+          if(result.category==='nowcategory')
+            this.showpro(this.nowcategory);
+          else
+            this.showpro(result.category);
+        }
+        
+      });
   }
   
+  productForm(product?){
+    if(product)
+      this.productservice.setitemid(product._id);
+  }
+
+  productRemove(product){
+    this.productservice.productremove(product.id)
+    .finally(()=>{})
+    .subscribe((result)=>{
+      if(result && result.category){
+        if(result.category)
+        this.showpro(result.category);
+      }
+    });
+  }
 }

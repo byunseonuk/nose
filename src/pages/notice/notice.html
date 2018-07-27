@@ -1,14 +1,24 @@
 <div id="notice-board-wrapper">
   <div class="head">
-    <h2>{{notice.title}}</h2>
-    <h4>{{notice.date}}</h4>
+    <h2>공지사항</h2>
+    <div>
+      <button *ngIf="auth" class="write"
+              (click)="openNoticeFormModel()"
+      >글쓰기</button>
+    </div>
   </div>
   <div class="notice-board-container">
-    <div class="contents-wrap" id="contents">
-      {{notice.contents}}
-    </div>
-    <div class="bottom-btn">
-      <button routerLink="/noticelist">목록으로</button>
-    </div>
+    <table class="table">
+      <tr>
+        <th>번호</th>
+        <th>제목</th>
+        <th>등록일</th>
+      </tr>
+      <tr *ngFor="let notice of options.noticelist;">
+        <td>{{notice.no}}</td>
+        <td class="noticetitle"><a (click)="opendetail(notice)" routerLink="/noticedetail" >{{notice.title}}</a></td>
+        <td>{{notice.createdAt | date:"yyyy.MM.dd"}}</td>
+      </tr>
+    </table>
   </div>
 </div>

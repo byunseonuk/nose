@@ -1,8 +1,23 @@
-<div class="top">
-  <div class="top-icon">
-    <img src="/pages/top/ic_header_symbol.png">
-  </div>
-  <div class="top-title">
-  <span>Nose Work</span>
+<div>
+  <div class="nav-wrapper">
+    <nav class="topnav">
+      <ul class="topnavlist" *ngIf="auth">
+        <li><img src="./ic_header_symbol.png"></li>
+        <li class="topnavlink"  routerLink="/notice" ><a routerLink="/notice"><span>공지사항</span></a></li>
+        <li class="topnavlink"  routerLink="/ordercheck"><a routerLink="/ordercheck"><span>상품발주내역확인</span></a></li>
+        <li class="topnavlink"  routerLink="/product"><a routerLink="/product"><span>상품정보</span></a></li>
+        <li class="topnavlink"  routerLink="/ordermanage"><a routerLink="/ordermanage"><span>주문/배송확인</span></a></li>
+        <li class="topnavlink"><a routerLink="/board"><span>정보게시판</span></a></li>
+        <li class="topnavlink"><a routerLink="/servicecenter"><span>고객센터</span></a></li>
+      </ul>
+      <ul class="topnavlist" *ngIf="!auth">
+        <li><img src="./ic_header_symbol.png"></li>
+        <li class="topnavlink"  routerLink="/notice" ><a routerLink="/notice"><span>공지사항</span></a></li>
+        <li class="topnavlink"  routerLink="/product"><a routerLink="/product"><span>상품발주</span></a></li>
+        <li class="topnavlink"  routerLink="/orderinfo"><a routerLink="/orderinfo"><span>주문/배송확인</span></a></li>
+        <li class="topnavlink"><a routerLink="/board"><span>정보게시판</span></a></li>
+        <li class="topnavlink"><a routerLink="/servicecenter"><span>고객센터</span></a></li>
+      </ul>
+    </nav>
   </div>
 </div>

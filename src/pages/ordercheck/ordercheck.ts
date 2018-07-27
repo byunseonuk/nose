@@ -8,7 +8,7 @@ import { Appservice } from '../../service/app.service';
 @Component({
   selector: 'ordercheck',
   templateUrl: './ordercheck.html',
-  styleUrls: ['./ordercheck.scss']
+  //styleUrls: ['./ordercheck.scss']
 })
  
 export class Ordercheck extends OnInit{
