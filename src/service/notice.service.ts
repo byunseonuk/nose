@@ -36,9 +36,9 @@ export class NoticeService{
     let url = this.serverUrl + '/findOne';
 
     let params: URLSearchParams = new URLSearchParams();
-    for(var key in queryParams){
-      params.set(key,JSON.stringify(queryParams[key]));
-    }
+    _.forEach(queryParams,(value,key) => {
+      params.set(key,JSON.stringify(value));
+    });
 
     return this.http
       .get(url, {search: params});

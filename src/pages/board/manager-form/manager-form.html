@@ -1,0 +1,76 @@
+<div>
+  <form>
+    <div style="display: flex">
+      <div>
+        <h4>담당자1</h4>
+        <div>
+          <div>
+            <div>
+              <p>이름</p>
+              <input  type="text"
+                      name="name"
+                      [(ngModel)]="managerInfo.manager1.name">
+            </div>
+            <div>
+              <p>이메일</p>
+              <input  type="email"
+                      name="email"
+                      [(ngModel)]="managerInfo.manager1.email">
+            </div>
+          </div>
+          <div>
+            <div>
+              <p>일반전화</p>
+              <input  type="tel"
+                      name="tel"
+                      [(ngModel)]="managerInfo.manager1.tel">
+            </div>
+            <div>
+              <p>휴대전화</p>
+              <input  type="tel"
+                      name="phone"
+                      [(ngModel)]="managerInfo.manager1.phone">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <h4>담당자2</h4>
+        <div>
+          <div>
+            <div>
+              <p>이름</p>
+              <input  type="text"
+                      name="name"
+                      [(ngModel)]="managerInfo.manager2.name">
+            </div>
+            <div>
+              <p>이메일</p>
+              <input  type="email"
+                      name="email"
+                      [(ngModel)]="managerInfo.manager2.email">
+            </div>
+          </div>
+          <div>
+            <div>
+              <p>일반전화</p>
+              <input  type="tel"
+                      name="tel"
+                      [(ngModel)]="managerInfo.manager2.tel">
+            </div>
+            <div>
+              <p>휴대전화</p>
+              <input  type="tel"
+                      name="phone"
+                      [(ngModel)]="managerInfo.manager2.phone">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <button (click)="submit()">저장</button>
+    </div>
+  </form>
+</div>

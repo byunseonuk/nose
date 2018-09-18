@@ -1,0 +1,19 @@
+exchangerefundmanage{
+  .container{
+    width: 100%;
+    display: flex;
+    .side{
+      width: 20%;
+      text-align: center;
+    }
+    .orderwrapper{
+      width: 80%;
+    }
+    .invoice-head {
+      display: flex;
+    }
+    .invoice-body {
+      display: flex;
+    }
+  }
+}

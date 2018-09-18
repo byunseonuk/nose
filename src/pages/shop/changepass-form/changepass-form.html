@@ -1,0 +1,17 @@
+<div>
+  <p>{{shop.companyname}}</p>
+  <form>
+    <div>
+      <label>변경비밀번호</label>
+      <input type="text" [(ngModel)]="newPassword"/>
+    </div>
+    <div>
+      <label>비밀번호확인</label>
+      <input type="text" [(ngModel)]="newPasswordcheck"/>
+    </div>
+    <div>
+      <button type="submit" (click)="submit()">변경</button>
+      <button (click)="dismiss()">취소</button>
+    </div>
+  </form>
+</div>

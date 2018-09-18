@@ -59,13 +59,10 @@ export class Login implements OnInit {
    *****************************/
 
   isValidLogin() {
-    let regExpMail = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/;
+   // let regExpMail = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/;
     let regExpPassword = /^.*(?=^.{8,12}$)(?=.*\d)(?=.*[a-zA-Z])(?=.*[*~`!^\-_+@\#$%&\=\(\)]).*$/;
 
-    if (!this.loginInfo['identifier'] || this.loginInfo['identifier'] == '' || this.loginInfo['identifier'].length > 32 || !regExpMail.test(this.loginInfo['identifier'])){
-      this.validationText = '이메일을 확인해주세요.';
-      return false;
-    } else if (!this.loginInfo['password'] || this.loginInfo['password ']== '') {
+   if (!this.loginInfo['password'] || this.loginInfo['password ']== '') {
       this.validationText = '비밀번호를 확인해주세요.';
       return false;
     } else if(!regExpPassword.test(this.loginInfo['password'])){
@@ -91,18 +88,16 @@ export class Login implements OnInit {
         })
         .subscribe(
           (userWrapper) => {
-            if(userWrapper['user']){
-              if(userWrapper['user'].role != '관리자') {
-                this.dialogService.message("알림", "관리자만 접속 할수 있는 공간 입니다.");
-              } else if(userWrapper['user'].isDeleted) {
+            if(userWrapper['shop']){
+              if(userWrapper['shop'].isDeleted) {
                 this.dialogService.message("알림", "비활성화된 계정입니다. 다른 관리자에게 요청해주세요.");
               } else {
-                this.appService.user = userWrapper['user'];
+                this.appService.shop = userWrapper['shop'];
                 this.appService.token = userWrapper['token'];
                 this.appService.sendEvent('login');
                 this.dialogRef.close('login');
               }
-            } else if(!userWrapper['user']){
+            } else if(!userWrapper['shop']){
               this.dialogService.message("알림", "등록되지 않은 사용자입니다.");
             }
           },

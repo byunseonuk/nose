@@ -29,7 +29,7 @@ export class NoticeDetail extends OnInit{
       title:'',
       contents:''
     }
-    if(this.appservice.getlog()==='admin'){
+    if(this.appservice.shop.role==='관리자'){
       this.auth=true;
     }else {
       this.auth=false;

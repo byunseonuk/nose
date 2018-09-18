@@ -1,0 +1,56 @@
+<div class="container">
+  <div class="side">
+    <h2>발주 내역</h2>
+    <div (click)="change('order')">발주내역확인</div>
+    <div (click)="change('exchangereturn')">교환/환불 내역확인</div>
+  </div>
+  <div class="orderwrapper">
+    <div *ngFor="let invoice of options.rows" >
+      <h3>{{invoice.createdAt}}</h3>
+      <div class="invoice-head">
+        <div [style.width]="'30%'">구매상품</div>
+        <div [style.width]="'10%'">수량</div>
+        <div [style.width]="'15%'">할인전가격</div>
+        <div [style.width]="'10%'">할인가격</div>
+        <div [style.width]="'15%'">할인적용후가격</div>
+      </div>
+      <div *ngFor="let item of invoice.itemList;" class="invoice-body">
+        <div [style.width]="'30%'">{{item.product.productname}}</div>
+        <div [style.width]="'10%'">{{item.quantity}}</div>
+        <div [style.width]="'15%'">{{item.originalprice}}</div>
+        <div [style.width]="'10%'">{{item.saleprice}}</div>
+        <div [style.width]="'15%'">{{item.price}}</div>
+      </div>
+      <div class="invoice-tailhead">
+        <div [style.width]="'30%'">총 가격</div>
+        <div [style.width]="'30%'">총 할인가격</div>
+        <div [style.width]="'30%'">합계</div>
+      </div>
+      <div class="invoice-tailbody">
+        <div [style.width]="'30%'">{{invoice.totaloriginalPrice}}</div>
+        <div [style.width]="'30%'">{{invoice.totaldiscountPrice}}</div>
+        <div [style.width]="'30%'">{{invoice.totalPrice}}</div>
+      </div>
+      <div *ngIf="mode==='order'">
+        <span>배송상태 :</span>
+        <button (click)="openReturnRefundForm(invoice)">반품/환불신청</button>
+      </div>
+      <div *ngIf="mode==='exchangereturn'">
+        <span>교환/반품상태 : </span>
+        <button (click)="ReturnRefundCancel(invoice)">취소</button>
+      </div>
+    </div>
+    <div class="grid-footer-panel" [style.height]="options.footerHeight">
+      <pager
+        [pagerLeftArrowIcon]="options.pagerLeftArrow"
+        [pagerRightArrowIcon]="options.pagerRightArrow"
+        [pagerPreviousIcon]="options.pagerPrevious"
+        [pagerNextIcon]="options.pagerNext"
+        [page]="options.page"
+        [size]="options.limit"
+        [count]="options.count"
+        (change)="findInvoice($event)">
+      </pager>
+    </div>
+  </div>
+</div>

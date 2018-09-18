@@ -6,6 +6,7 @@ import { NgModuleCompiler } from "@angular/compiler";
 import {DaumMap} from "../../daum-map/daum-map";
 import {DialogService} from "../../../service/dialog-message/dialog-message.service";
 import {MdDialog, MdDialogConfig, MdDialogRef} from "@angular/material";
+import { TransactionService } from "../../../service/transaction.service";
 
 @Component({
   selector: 'order-form',
@@ -17,22 +18,14 @@ export class OrderFrom extends OnInit{
   config: MdDialogConfig = new MdDialogConfig();
   dialogDaumMapRef: MdDialogRef<DaumMap>;
   invoiceId;
-  invoice={
-    itemList:[],
-    paymentType:'',
-    isDeleted:false,
-    products:[],
-    totalsaleprice:0,
-    totalprice:0,
-    totaloriginalprice:0
-
-  }
+  invoice;
   deliveryInfo;
   address;
   place;
   constructor(private appservice:Appservice,
               private dialogService:DialogService,
-              private mdDialog: MdDialog,){
+              private mdDialog: MdDialog,
+              private transactionService: TransactionService){
     super();
   }
   orderlist;
@@ -49,12 +42,24 @@ export class OrderFrom extends OnInit{
       phone: null,
       name: ''
     };
+    this.invoice={
+      itemList:[],
+      paymentType:'',
+      isDeleted:false,
+      products:[],
+      deliveryPrice:0,
+      totalQuantity:0,
+      totaldiscountPrice:0,
+      totalPrice:0,
+      totaloriginalPrice:0
+  
+    }
     Object.assign(this.invoice,this.orderlist);
     console.log(this.invoice);
   }
 
   submit(){
-    if(this.invoiceId)
+    if(!this.invoiceId)
       this.create();
     else 
       this.update();
@@ -81,7 +86,26 @@ export class OrderFrom extends OnInit{
   }
 
   create(){
-    
+    let subTitle = '';
+    this.transactionService.pendingPayment(this.invoice, this.appservice.shop, this.deliveryInfo)
+      .subscribe(()=>{
+        
+        subTitle = '주문완료.';
+        this.dialogService.message("알림", subTitle);
+      },
+      (err) => {
+        switch(err.status){
+          case 400:
+            subTitle = '입력한 정보를 확인해주세요.';
+            break;
+          case 500:
+            subTitle = '서버에러';
+            break;
+          default:
+            break;
+        }
+         this.dialogService.message("알림", subTitle);
+      });
   }
 
   update(){

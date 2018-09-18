@@ -1,79 +1,168 @@
 <div class ='managerinfo-container'>
-    <div class="managerinfo-pannel">
-        <div class='managerinfo-header-pannel'>담당자</div>
-        <div class='managerinfo-child-pannel'>
-            <div class="managerinfo-child">
-                <div class="ManagerPart">정산 담당자</div>
-                <table width="98%" border="0" cellpadding="4" cellspacing="1" bgcolor="#b9b9b9">
-                    <tbody><tr bgcolor="#fafafa" height="30">
-                        <td width="15%" bgcolor="#eeeeee">담당자명 (직함)</td>
-                        <td width="35%">
-                            <input type="text" name="f_managername" size="20" value={{this.appService.user.managerInfo.manager1.name}} class="input" onfocus="jsFocus(this)" onblur="jsBlur(this);"> 
-                        </td>
-                        <td width="15%" bgcolor="#eeeeee">E-Mail</td>
-                        <td width="35%"> 
-                            <input type="text" name="f_managermail" size="30" value={{this.appService.user.managerInfo.manager1.email}} class="input" onfocus="jsFocus(this)" onblur="jsBlur(this);"> 
-                        </td>
-                    </tr>
-                    <tr bgcolor="#fafafa" height="30">
-                        <td bgcolor="#eeeeee">전화번호</td>
-                        <td>
-                            <input type="text" name="f_managertel" size="15" maxlength="15" value={{this.appService.user.managerInfo.manager1.tel}} class="input" onfocus="jsFocus(this)" onblur="jsBlur(this);">&nbsp;("-" 포함)
-                        </td>
-                        <td bgcolor="#eeeeee">휴대전화</td>
-                        <td>
-                            <input type="text" name="f_managermobile" size="15" maxlength="15" value={{this.appService.user.managerInfo.manager1.phone}} class="input" onfocus="jsFocus(this)" onblur="jsBlur(this);">&nbsp;("-" 포함)
-                        </td>
-                    </tr>
-                    </tbody></table>
+	<div class="managerinfo-pannel">
+		<div class='managerinfo-header-pannel'>담당자</div>
 
-                    <div class="ManagerPart">물류 담당자</div>
-                    <table width="98%" border="0" cellpadding="4" cellspacing="1" bgcolor="#b9b9b9">
-                        <tbody><tr bgcolor="#fafafa" height="30">
-                            <td width="15%" bgcolor="#eeeeee">담당자명 (직함)</td>
-                            <td width="35%">
-                                <input type="text" name="f_managername" size="20" value={{this.appService.user.managerInfo.manager2.name}} class="input" onfocus="jsFocus(this)" onblur="jsBlur(this);"> 
-                            </td>
-                            <td width="15%" bgcolor="#eeeeee">E-Mail</td>
-                            <td width="35%"> 
-                                <input type="text" name="f_managermail" size="30" value={{this.appService.user.managerInfo.manager2.email}} class="input" onfocus="jsFocus(this)" onblur="jsBlur(this);"> 
-                            </td>
-                        </tr>
-                        <tr bgcolor="#fafafa" height="30">
-                            <td bgcolor="#eeeeee">전화번호</td>
-                            <td>
-                                <input type="text" name="f_managertel" size="15" maxlength="15" value={{this.appService.user.managerInfo.manager2.tel}} class="input" onfocus="jsFocus(this)" onblur="jsBlur(this);">&nbsp;("-" 포함)
-                            </td>
-                            <td bgcolor="#eeeeee">휴대전화</td>
-                            <td>
-                                <input type="text" name="f_managermobile" size="15" maxlength="15" value={{this.appService.user.managerInfo.manager2.phone}} class="input" onfocus="jsFocus(this)" onblur="jsBlur(this);">&nbsp;("-" 포함)
-                            </td>
-                        </tr>
-                    </tbody></table>
-                    <div class="ManagerPart">노즈워크 담당자</div>
-                    <table width="98%" border="0" cellpadding="4" cellspacing="1" bgcolor="#b9b9b9">
-                        <tbody><tr bgcolor="#fafafa" height="30">
-                            <td width="15%" bgcolor="#eeeeee">담당자명 (직함)</td>
-                            <td width="35%">
-                                <input type="text" name="f_managername" size="20" value={{this.appService.user.managerInfo.noseworkmanager.name}} class="input" onfocus="jsFocus(this)" onblur="jsBlur(this);"> 
-                            </td>
-                            <td width="15%" bgcolor="#eeeeee">E-Mail</td>
-                            <td width="35%"> 
-                                <input type="text" name="f_managermail" size="30" value={{this.appService.user.managerInfo.noseworkmanager.email}} class="input" onfocus="jsFocus(this)" onblur="jsBlur(this);"> 
-                            </td>
-                        </tr>
-                        <tr bgcolor="#fafafa" height="30">
-                            <td bgcolor="#eeeeee">전화번호</td>
-                            <td>
-                                <input type="text" name="f_managertel" size="15" maxlength="15" value={{this.appService.user.managerInfo.noseworkmanager.tel}} class="input" onfocus="jsFocus(this)" onblur="jsBlur(this);">&nbsp;("-" 포함)
-                            </td>
-                            <td bgcolor="#eeeeee">휴대전화</td>
-                            <td>
-                                <input type="text" name="f_managermobile" size="15" maxlength="15" value={{this.appService.user.managerInfo.noseworkmanager.phone}} class="input" onfocus="jsFocus(this)" onblur="jsBlur(this);">&nbsp;("-" 포함)
-                            </td>
-                        </tr>
-                    </tbody></table>
-            </div>
-        </div>
-    </div>
+		<div class='managerinfo-child-pannel'>
+			<div class="managerinfo-child">
+				<div class="ManagerPart">정산 담당자</div>
+				
+				<table width="98%" border="0" cellpadding="4" cellspacing="1" bgcolor="#b9b9b9">
+					<tbody>
+						<tr bgcolor="#fafafa" height="30">
+							<td width="15%" bgcolor="#eeeeee">담당자명 (직함)</td>
+							<td width="35%">{{managerInfo.manager1.name}}
+								<!-- <input	type="text" 
+												name="f_managername" 
+												size="20"  
+												class="input" 
+												onfocus="jsFocus(this)" 
+												onblur="jsBlur(this);"
+												[(ngModel)]="managerInfo.manager1.name">  -->
+							</td>
+							<td width="15%" bgcolor="#eeeeee">E-Mail</td>
+							<td width="35%"> {{managerInfo.manager1.email}}
+								<!-- <input	type="text" 
+												name="f_managermail" 
+												size="30"  class="input" 
+												onfocus="jsFocus(this)" 
+												onblur="jsBlur(this);"
+												[(ngModel)]="managerInfo.manager1.email">  -->
+							</td>
+						</tr>
+						<tr bgcolor="#fafafa" height="30">
+							<td bgcolor="#eeeeee">전화번호</td>
+							<td>{{managerInfo.manager1.tel}}
+								<!-- <input	type="text" 
+												name="f_managertel" 
+												size="15" 
+												maxlength="15"  
+												class="input" 
+												onfocus="jsFocus(this)" 
+												onblur="jsBlur(this);"
+												[(ngModel)]="managerInfo.manager1.tel">&nbsp;("-" 포함) -->
+							</td>
+							<td bgcolor="#eeeeee">휴대전화</td>
+							<td>{{managerInfo.manager1.phone}}
+								<!-- <input	type="text" 
+												name="f_managermobile" 
+												size="15" 
+												maxlength="15" 
+												class="input" 
+												onfocus="jsFocus(this)" 
+												onblur="jsBlur(this);"
+												[(ngModel)]="managerInfo.manager1.phone">&nbsp;("-" 포함) -->
+							</td>
+						</tr>
+					</tbody>
+				</table>
+
+				<div class="ManagerPart">물류 담당자</div>
+				
+				<table width="98%" border="0" cellpadding="4" cellspacing="1" bgcolor="#b9b9b9">
+					<tbody>
+						<tr bgcolor="#fafafa" height="30">
+							<td width="15%" bgcolor="#eeeeee">담당자명 (직함)</td>
+							<td width="35%">{{managerInfo.manager2.name}}
+								<!-- <input	type="text" 
+												name="f_managername" 
+												size="20"  
+												class="input" 
+												onfocus="jsFocus(this)" 
+												onblur="jsBlur(this);"
+												[(ngModel)]="managerInfo.manager2.name">  -->
+							</td>
+							<td width="15%" bgcolor="#eeeeee">E-Mail</td>
+							<td width="35%"> {{managerInfo.manager2.email}}
+								<!-- <input	type="text" 
+												name="f_managermail" 
+												size="30"  class="input" 
+												onfocus="jsFocus(this)" 
+												onblur="jsBlur(this);"
+												[(ngModel)]="managerInfo.manager2.email">  -->
+							</td>
+						</tr>
+						<tr bgcolor="#fafafa" height="30">
+							<td bgcolor="#eeeeee">전화번호</td>
+							<td>{{managerInfo.manager2.tel}}
+								<!-- <input	type="text" 
+												name="f_managertel" 
+												size="15" 
+												maxlength="15"  
+												class="input" 
+												onfocus="jsFocus(this)" 
+												onblur="jsBlur(this);"
+												[(ngModel)]="managerInfo.manager2.tel">&nbsp;("-" 포함) -->
+							</td>
+							<td bgcolor="#eeeeee">휴대전화</td>
+							<td>{{managerInfo.manager2.phone}}
+								<!-- <input	type="text" 
+												name="f_managermobile" 
+												size="15" 
+												maxlength="15" 
+												class="input" 
+												onfocus="jsFocus(this)" 
+												onblur="jsBlur(this);"
+												[(ngModel)]="managerInfo.manager2.phone">&nbsp;("-" 포함) -->
+							</td>
+						</tr>
+					</tbody>
+				</table>
+				
+				<div class="ManagerPart">노즈워크 담당자</div>
+				<table width="98%" border="0" cellpadding="4" cellspacing="1" bgcolor="#b9b9b9">
+					<tbody>
+						<tr bgcolor="#fafafa" height="30">
+							<td width="15%" bgcolor="#eeeeee">담당자명 (직함)</td>
+							<td width="35%">{{managerInfo.noseworkmanager.name}}
+								<!-- <input	type="text" 
+												name="f_managername" 
+												size="20"  
+												class="input" 
+												onfocus="jsFocus(this)" 
+												onblur="jsBlur(this);"
+												[(ngModel)]="managerInfo.noseworkmanager.name">  -->
+							</td>
+							<td width="15%" bgcolor="#eeeeee">E-Mail</td>
+							<td width="35%"> {{managerInfo.noseworkmanager.email}}
+								<!-- <input	type="text" 
+												name="f_managermail" 
+												size="30"  
+												class="input" 
+												onfocus="jsFocus(this)" 
+												onblur="jsBlur(this);"
+												[(ngModel)]="managerInfo.noseworkmanager.email">  -->
+							</td>
+						</tr>
+						<tr bgcolor="#fafafa" height="30">
+							<td bgcolor="#eeeeee">전화번호</td>
+							<td>{{managerInfo.noseworkmanager.tel}}
+								<!-- <input	type="text" 
+												name="f_managertel" 
+												size="15" 
+												maxlength="15"  
+												class="input" 
+												onfocus="jsFocus(this)" 
+												onblur="jsBlur(this);"
+												[(ngModel)]="managerInfo.noseworkmanager.tel">&nbsp;("-" 포함) -->
+							</td>
+							<td bgcolor="#eeeeee">휴대전화</td>
+							<td>{{managerInfo.noseworkmanager.phone}}
+								<!-- <input	type="text" 
+												name="f_managermobile" 
+												size="15" 
+												maxlength="15" 
+												class="input" 
+												onfocus="jsFocus(this)"
+												onblur="jsBlur(this);"
+												[(ngModel)]="managerInfo.noseworkmanager.phone">&nbsp;("-" 포함) -->
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+		<div>
+			<button routerLink="/manager-form">수정</button>
+		</div>
+	</div>
 </div>

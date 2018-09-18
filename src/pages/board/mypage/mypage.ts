@@ -11,21 +11,40 @@ import { Appservice } from '../../../service/app.service';
 @Component({
     selector: 'mypage',
     templateUrl: './mypage.html',
-    styleUrls:['./mypage.css']
+    styleUrls:['./mypage.scss']
 })
 export class Mypage implements OnInit {
     
     currentPassword;
     password;
     passwordConfirm;
-
     testdata = TestData;
-
+    shop;
+    companyaddr;
+    testshop;
+    params
     constructor(private appService: Appservice,
                 private dialogService: DialogService,
                 private authService: AuthService){}
     ngOnInit(){
-      this.appService.user;
+      this.shop = {
+        tel:'',
+        password:''
+      };
+
+      this.companyaddr= {
+        addressInfo: {
+          zipCode: '',
+          address: '',
+          detailAddress: ''
+        },
+        phone: null,
+        name: ''
+      };
+      this.params={
+        _id:''
+      };
+      //his.testshop = this.shopService.findOne();
     }
 
     @HostListener('window:resize')
@@ -45,38 +64,9 @@ export class Mypage implements OnInit {
          //return true;
     }
 
-    shopchangePassword(){
-        if(this.isValid()){
-          let subTitle = '';
-          console.log(this.currentPassword);
-          console.log(this.password);
-          this.authService.shopchangePassword(this.currentPassword, this.password)
-            .finally(() => {
-            })
-            .subscribe(
-              () => {
-                subTitle = '새로운 비밀번호가 설정되었습니다.';
-                this.dialogService.message("알림", subTitle);
-              },
-              (err) => {
-                switch(err.status){
-                  case 400:
-                    subTitle = '입력한 정보를 확인해주세요.';
-                    break;
-                  case 422:
-                    subTitle = '올바른 패스워드가 아닙니다.';
-                    break;
-                  case 500:
-                    subTitle = '서버에러';
-                    break;
-                  default:
-                    break;
-                }
-                 this.dialogService.message("알림", subTitle);
-              }
-            );
-        } else {
-           this.dialogService.message("알림", "입력한 정보를 확인해주세요.");
-        }
-       }
+    changeInfo(){
+      
+    }
+
+    
 }

@@ -8,12 +8,13 @@ import { AppComponent } from './app.component';
 import { Notice } from '../pages/notice/notice';
 import { Product } from '../pages/product/product';
 import { routing } from './app.routes';
-import { Orderinfo } from '../pages/order/orderinfo';
+import { Order } from '../pages/order/order';
 import { Top } from '../pages/top/top';
-import { Ordermanage } from '../pages/ordermanage/ordermanage';
-import { Ordercheck } from '../pages/ordercheck/ordercheck';
+import { ExchangeRefundManage } from '../pages/exchangerefundmanage/exchangerefundmanage';
+import { OrderCheck } from '../pages/ordercheck/ordercheck';
+import { Shop } from '../pages/shop/shop';
 
-import { Refundrequest } from '../pages/order/refundrequest/refundrequest';
+import { ExchangeReturn } from '../pages/order/exchangereturn-form/exchangereturn-form';
 import { FroalaEditorModule, FroalaViewModule } from 'angular2-froala-wysiwyg';
 import { Appservice } from '../service/app.service';
 import { Board } from '../pages/board/board';
@@ -22,10 +23,9 @@ import { ManagerInfo } from '../pages/board/managerinfo/managerinfo';
 import { SalesStatus } from '../pages/board/salesstatus/salestatus';
 import { ServiceCenter } from '../pages/servicecenter/servicecenter';
 import { AuthMypage } from '../pages/board/mypage/authmypage/authmypage';
-import { ManagerPage } from '../pages/board/ManagerPage/managerpage';
 import {Request} from '../pages/servicecenter/request/request';
 import {ChartsModule} from 'ng2-charts';
-import { Signup } from '../pages/signup/signup';
+import { ShopForm } from '../pages/shop/shop-form/shop-form';
 import { AuthService } from '../service/auth.service';
 import {HttpInterceptorModule} from "../lib/ng-http-interceptor/http/module";
 import { DialogService } from '../service/dialog-message/dialog-message.service';
@@ -39,11 +39,17 @@ import { OrderFrom } from '../pages/order/order-form/order-form';
 import { DaumMap } from "../pages/daum-map/daum-map";
 import { ProductDetail } from '../pages/product/product-detail/product-detail';
 import { MdDialogModule, MdIconRegistry, MaterialModule, MaterialRootModule } from '@angular/material';
-import { ChangePasswordForm } from '../pages/header/change-password-form/change-password-form';
 import { SidenavService } from '../service/sidenav.service';
-import { Header } from '../pages/header/header';
-import { Sidenav } from '../pages/sidenav/sidenav';
+
 import { LoadingComponent } from '../service/loading/loading.component';
+import { ShopService } from '../service/shop.service';
+import { ChangePassword } from '../pages/board/mypage/changepassword/changepassword';
+import { ChangeInfo } from '../pages/board/mypage/changeInfo/changeInfo';
+import { ManagerForm } from '../pages/board/manager-form/manager-form';
+import { TransactionService } from '../service/transaction.service';
+import { PagerComponent } from '../pages/pager/pager.component';
+import { ChangeStatusForm } from '../pages/changestatus-form/changestatus-form';
+import { ChangePassForm } from '../pages/shop/changepass-form/changepass-form';
 
 
 
@@ -55,11 +61,11 @@ import { LoadingComponent } from '../service/loading/loading.component';
     NoticeDetail,
     NoticeForm,
     Product,
-    Orderinfo,
+    Order,
     Top,
-    Ordermanage,
-    Ordercheck,
-    Refundrequest,
+    ExchangeRefundManage,
+    OrderCheck,
+    ExchangeReturn,
     Board,
     Mypage,
     ManagerInfo,
@@ -68,15 +74,20 @@ import { LoadingComponent } from '../service/loading/loading.component';
     Request,
     OrderFrom,
     AuthMypage,
-    ManagerPage,
+    ManagerForm,
     ProductForm,
-    Signup,
+    ShopForm,
     DialogMessage,
     DaumMap,
     ProductDetail,
-    ChangePasswordForm,
-    Sidenav,
-    LoadingComponent
+    ChangePassword,
+    ChangeInfo,
+    LoadingComponent,
+    PagerComponent,
+    ChangeStatusForm,
+    Shop,
+    ChangePassForm
+    
   ],
   imports: [
     BrowserModule,
@@ -97,18 +108,24 @@ import { LoadingComponent } from '../service/loading/loading.component';
     DialogService,
     MdIconRegistry,
     ProductService,
-    NoticeService
+    NoticeService,
+    ShopService,
+    TransactionService
   ],
   bootstrap: [AppComponent],
   entryComponents: [
     Login,
-    Signup,
+    ShopForm,
     DialogMessage,
     ProductForm,
     DaumMap,
     NoticeForm,
     ProductDetail,
-    ChangePasswordForm
+    ExchangeReturn,
+    ChangeStatusForm,
+    ShopForm,
+    ChangePassForm
+
 
   ]
 })

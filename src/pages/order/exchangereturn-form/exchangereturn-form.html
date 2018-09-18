@@ -1,0 +1,47 @@
+<div class="orderwrapper">
+  <div>
+    <button (click)="dismiss()">Close</button>
+  </div>
+  <div *ngIf="invoice!=null">
+    <h3>{{invoice.createdAt}}</h3>
+    <div class="invoice-head">
+      <div [style.width]="'30%'">구매상품</div>
+      <div [style.width]="'10%'">수량</div>
+      <div [style.width]="'15%'">할인전가격</div>
+      <div [style.width]="'10%'">할인가격</div>
+      <div [style.width]="'15%'">할인적용후가격</div>
+    </div>
+    <div *ngFor="let item of invoice.itemList;" class="invoice-body">
+      <div [style.width]="'30%'">{{item.product.productname}}</div>
+      <div [style.width]="'10%'">{{item.quantity}}</div>
+      <div [style.width]="'15%'">{{item.originalprice}}</div>
+      <div [style.width]="'10%'">{{item.saleprice}}</div>
+      <div [style.width]="'15%'">{{item.price}}</div>
+    </div>
+    <div class="invoice-tailhead">
+      <div [style.width]="'30%'">총 가격</div>
+      <div [style.width]="'30%'">총 할인가격</div>
+      <div [style.width]="'30%'">합계</div>
+    </div>
+    <div class="invoice-tailbody">
+      <div [style.width]="'30%'">{{invoice.totaloriginalPrice}}</div>
+      <div [style.width]="'30%'">{{invoice.totaldiscountPrice}}</div>
+      <div [style.width]="'30%'">{{invoice.totalPrice}}</div>
+    </div>
+    <div>
+      <label>교환</label>
+      <input  type="radio" 
+              [(ngModel)]="exchangerefund"
+              name="exchangerefund"
+              value="EXCHANGE_REQUESTED">
+      <label>반품</label>
+      <input  type="radio" 
+              [(ngModel)]="exchangerefund"
+              name="exchangerefund"
+              value="REFUND_REQUESTED">
+    </div>
+    <div>
+      <button (click)="exchangereturnRequest()">교환/반품요청</button>
+    </div>
+  </div>
+</div>

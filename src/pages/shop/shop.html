@@ -1,0 +1,36 @@
+<div class="container">
+  <div class="side">
+    <h2>SHOP 관리</h2>
+    <div (click)="openChangeShopForm()">Shop 추가</div>
+  </div>
+  <div class="orderwrapper">
+    <div>
+      <form>
+        <input  type="text"
+                [(ngModel)]="searchKeyword"
+                [ngModelOptions]="{standalone: true}"/>{{searchKeyword}}
+        <button type="submit" (click)="findShop({page: 1})">검색</button>
+      </form>
+    </div>
+    <div *ngFor="let shop of options.rows" >
+      <div class="invoice-head">
+        <div [style.width]="'30%'">회사명</div>
+        <div [style.width]="'20%'">전화</div>
+        <div [style.width]="'30%'">이메일</div>
+        <div [style.width]="'10%'">등급</div>
+        
+      </div>
+      <div class="invoice-body">
+        <div [style.width]="'30%'">{{shop.companyname}}</div>
+        <div [style.width]="'20%'">{{shop.tel}}</div>
+        <div [style.width]="'30%'">{{shop.email}}</div>
+        <div [style.width]="'10%'">{{shop.membership.level}}</div>
+        <div [style.width]="'10%'">
+          <button (click)="openChangeShopForm(shop)">정보수정</button>
+          <button (click)="openChangePassForm(shop)">비밀번호변경</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</div>

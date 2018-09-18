@@ -12,12 +12,23 @@ import {MdDialog, MdDialogConfig, MdDialogRef} from "@angular/material";
 })
  
 export class Notice extends OnInit{
-  options={
-    noticelist:[],
-    limit:8,
-    page:1,
-    count:null
-  }
+  options = {
+    rows: [],
+    selected: null,
+    headerHeight: "60px",
+    footerHeight: "100px",
+    rowHeight: "80px",
+    bodyHeight: "640px",
+    limit: 8,
+    count: 0,
+    page: 1,
+    sortAscending: 'icon-down',
+    sortDescending: 'icon-up',
+    pagerLeftArrow: 'prev1',
+    pagerRightArrow: 'next1',
+    pagerPrevious: 'prevEnd',
+    pagerNext: 'nextEnd'
+  };
   dialogNoticeRef: MdDialogRef<NoticeForm>;
   config: MdDialogConfig = new MdDialogConfig();
   auth;
@@ -30,12 +41,12 @@ export class Notice extends OnInit{
   }
   
   ngOnInit(){
-    if(this.appservice.getlog()==='admin'){
+    if(this.appservice.shop.role==='관리자'){
       this.auth=true;
     }else {
       this.auth=false;
     }
-    this.getNoticeList();
+    this.getNoticeList({page: this.options.page});
   }
   openNoticeFormModel(notice?) {
     this.dialogService.noticeformModal(this.config);
@@ -47,15 +58,17 @@ export class Notice extends OnInit{
 
     this.dialogNoticeRef.afterClosed()
       .subscribe((result) => {
-        this.getNoticeList();
+        this.getNoticeList({page: this.options.page});
       });
   }
-  getNoticeList(){
-    let skip = 0;
+  getNoticeList(event){
+    this.options.page = event.page;
+
+    let skip = (this.options.page - 1) * this.options.limit;
     let params: any = {
-      query: {isDeleted: false,},
-      //limit: 8,
-     // skip: skip,
+      query: {isDeleted: false},
+      limit: this.options.limit,
+      skip: skip,
       sort: {createdAt: -1}
     };
     this.noticeservice.find(params)

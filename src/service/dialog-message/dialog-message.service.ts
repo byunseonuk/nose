@@ -99,4 +99,10 @@ export class DialogService {
     }
   }
 
+  changepasswordModal(config){
+    config.disableClose = false;
+    config['width'] = '1000px';
+    config['height'] = '500px';
+  }
+
 }

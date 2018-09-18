@@ -12,28 +12,28 @@
   </div>
 
   <div class="body-panel">
-    <div *ngFor="let orderitem of invoice.itemList;" class="item-panel">
-        <div [style.width]="'30%'">{{orderitem.name}}</div>
-        <div [style.width]="'10%'">{{orderitem.quantity}}</div>
-        <div [style.width]="'15%'">{{orderitem.originalprice}}</div>
-        <div [style.width]="'15%'">{{orderitem.saleprice}}</div>
-        <div [style.width]="'20%'">{{orderitem.price}}</div>
+    <div *ngFor="let item of invoice.itemList;" class="item-panel">
+        <div [style.width]="'30%'">{{item.product.productname}}</div>
+        <div [style.width]="'10%'">{{item.quantity}}</div>
+        <div [style.width]="'15%'">{{item.originalprice}}</div>
+        <div [style.width]="'15%'">{{item.saleprice}}</div>
+        <div [style.width]="'20%'">{{item.price}}</div>
     </div>
 
     <div class="total-panel">
       <div [style.width]="'30%'">
         <div>총 금액</div>
-        <div>{{invoice.totaloriginalprice}}</div>       
+        <div>{{invoice.totaloriginalPrice}}</div>       
       </div>
       
       <div [style.width]="'30%'">
         <div>총 할인 금액</div>
-        <div>{{invoice.totalsaleprice}}</div>
+        <div>{{invoice.totaldiscountPrice}}</div>
       </div>
  
       <div [style.width]="'30%'">
         <div>총 할인 적용 금액</div>
-        <div>{{invoice.totalprice}}</div>
+        <div>{{invoice.totalPrice}}</div>
       </div>
     </div>
   </div>
@@ -48,9 +48,8 @@
                     readonly
                     placeholder="검색 주소"
                     [(ngModel)]="address"
-
-                    value="text"
-                    >
+                    value="text">
+                    
             <button class="btn-findAddress"
                     type="button"
                     (click)="openDaumMapForm()">
@@ -65,7 +64,7 @@
 
         <div>
           <p>전화번호</p>
-          <input type="phone"
+          <input type="number"
                   name="phone"
                   placeholder="'-'없이 입력해주세요."
                   [(ngModel)]="deliveryInfo.phone">
@@ -82,14 +81,8 @@
     </form>
   </div>
   <div >
-    <input type="radio" name="paymentType" value="bank" [(ngModel)]="invoice.paymentType"/>
-      무통장입금
     <input type="radio" name="paymentType" value="card" [(ngModel)]="invoice.paymentType"/>
       신용카드
-    <input type="radio" name="paymentType" value="tans" [(ngModel)]="invoice.paymentType"/>
-      계좌이체
-  </div>
-
   <div>
 
   </div>

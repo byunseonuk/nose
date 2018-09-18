@@ -55,9 +55,7 @@ export class AppComponent implements OnInit, OnDestroy {
     this.appEventDisposor = this.appService.appEvent.subscribe(this.appEventHandler.bind(this));
     this.initialiseInterceptor();
 
-    if(this.appService.user)
-      this.loadAdmin();
-    else
+    if(!this.appService.shop)
       this.openLoginDialog();
   }
 
@@ -73,7 +71,7 @@ export class AppComponent implements OnInit, OnDestroy {
   appEventHandler(event) {
     switch (event.name) {
       case 'login':
-        this.loadAdmin();
+        //this.loadAdmin();
         break;
       case 'logout':
         this.openLoginDialog();
@@ -92,7 +90,7 @@ export class AppComponent implements OnInit, OnDestroy {
 
       // Setting header?
       let requestHeaders = getHttpHeadersOrInit(req, method);
-      if (this.appService.user && this.appService.token){
+      if (this.appService.shop && this.appService.token){
         requestHeaders.set('Authorization', 'Bearer ' + this.appService.token);
       }
 
@@ -110,7 +108,7 @@ export class AppComponent implements OnInit, OnDestroy {
           switch(err.status){
             case 401 :
             case 403 :
-              this.appService.user = null;
+              this.appService.shop = null;
               this.appService.token = null;
               let loginDialog = _.find(this.dialog._openDialogs, (dialog) => {
                 return (dialog.componentInstance instanceof Login);
@@ -143,19 +141,19 @@ export class AppComponent implements OnInit, OnDestroy {
    *       helper functions
    *****************************/
 
-  loadAdmin() {
-    this.authService.shopgetMyUserInfo({})
-      .subscribe(
-        (data) => {
-          if (!data.user || data.user.role !== "관리자") {
-            this.appService.user = null;
-            return this.dialogService.message("알림", "관리자만 접속 할수 있는 공간 입니다.")
-              .subscribe(() => {
-                this.authService.logout().subscribe();
-                window.location.href = "https://nosework-official.com";
-              });
-          }
-        });
-  }
+  // loadAdmin() {
+  //   this.authService.shopgetMyUserInfo({})
+  //     .subscribe(
+  //       (data) => {
+  //         if (!data.user || data.user.role !== "관리자") {
+  //           this.appService.shop = null;
+  //           return this.dialogService.message("알림", "관리자만 접속 할수 있는 공간 입니다.")
+  //             .subscribe(() => {
+  //               this.authService.logout().subscribe();
+  //               window.location.href = "https://nosework-official.com";
+  //             });
+  //         }
+  //       });
+  // }
 
 }

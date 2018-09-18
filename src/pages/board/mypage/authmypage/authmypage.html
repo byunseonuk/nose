@@ -3,7 +3,7 @@
         <div class="auth-pannel">
             <div class="auth-header-pannel">회원정보 확인</div>
             <p>
-                {{this.appService.user.identifier}} 님의 정보를 안전하게 보호하기 위해 비밀번호를 다시 한번 확인 합니다.
+                {{this.appService.shop.identifier}} 님의 정보를 안전하게 보호하기 위해 비밀번호를 다시 한번 확인 합니다.
             </p>
             <div class="auth-child-pannel">
                 <div class="auth-child">
@@ -11,7 +11,7 @@
                         <tbody>
                             <tr>
                                 <th>아이디</th>
-                                <td>{{this.appService.user.identifier}}</td>
+                                <td>{{this.appService.shop.identifier}}</td>
                             </tr>
                             <tr>
                                 <th>비밀번호</th>
@@ -28,7 +28,7 @@
                 <div class="confirm">
                     <button class="btn-confirm"
                      type="submit"
-                     (click)="login()"
+                     (click)="checkShop()"
                      >확인</button>
                 </div>
             </div>

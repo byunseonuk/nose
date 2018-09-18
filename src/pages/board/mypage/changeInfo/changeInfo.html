@@ -1,0 +1,43 @@
+<div>
+  <div>
+    <form>
+      <div>
+        <h3>회사이름</h3>
+        <input  type="text"
+                name="companyname"
+                readonly
+                [(ngModel)]="shop.companyname" />
+      </div>
+      <div>
+        <h3>대표전화</h3>
+        <input  type="tel"
+                name="tel"
+                placeholder="tel"
+                [(ngModel)]="shop.tel"/>
+      </div>
+      <div>
+        <h3>이메일</h3>
+        <input  type="email"
+                name="email"
+                placeholder="nose@nose.com"
+                [(ngModel)]="shop.email"/>
+      </div>
+      <div>
+        <h3>주소</h3>
+        <button >우편찾기</button>
+        <input  type="text"
+                name="address"
+                placeholder="주소"
+                [(ngModel)]="companyaddr.address" />
+        <input  type="text"
+                name="detailAddress"
+                placeholder="상세주소"
+                [(ngModel)]="companyaddr.detailAddress" />
+      </div>
+      <div>
+        <button (click)="change()">저장</button>
+        <button>취소</button>
+      </div>
+    </form>
+  </div>
+</div>

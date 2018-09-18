@@ -27,7 +27,7 @@
               <div class="product-order-num"
                   *ngIf="!auth">
                 <span>수량</span><br>
-                <input type="number" min="0" placeholder="0" (keyup)="nose11($event)"/>
+                <input type="number" min="0" placeholder="0" (change)="nose11($event)"/>
               </div>
 
               <div class="detail-cart-btn" *ngIf="!auth">
@@ -56,10 +56,10 @@
     <p> </p>
     <div *ngFor="let orderitem of order.itemList; let idx = index"
         class="orderproduct" >
-      <span>{{orderitem.product.prodcutname}} : {{orderitem.quantity}} 개</span><button (click)="del_order(idx)">X</button>
+      <span>{{orderitem.product.productname}} : {{orderitem.quantity}} 개</span><button (click)="del_order(idx)">X</button>
     </div>
     <div>
-      <span>총 금액: {{order.totalprice}}</span>
+      <span>총 금액: {{order.totalPrice}}</span>
     </div>
     <div>
       <button (click)="pay()" class="pay-btn-class" routerLink="/order-form">결제하기</button>

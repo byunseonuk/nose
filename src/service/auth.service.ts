@@ -29,24 +29,22 @@ export class AuthService{
     return this.http.post(url, data);
   }
 
-  shopchangePassword(oldPassword: string, newPassword: string): Observable<any> {
-    let url = this.serverUrl + '/shopchangePassword';
-
-    return this.http
-      .put(url, {oldPassword: oldPassword, newPassword: newPassword});
+  update(data): Observable<any>{
+    let url = this.serverUrl + '/shopUpdate';
+    console.log(data);
+    return this.http.put(url,data);
   }
 
-  shopgetMyUserInfo(queryParams: any): Observable<any> {
-    let url = this.serverUrl + '/shopme';
-
-    let params: URLSearchParams = new URLSearchParams();
-    
-    _.forEach(queryParams, (value, key) => {
-      params.set(key, JSON.stringify(value));
-    });
+  shopChangePassword(id:number, oldPassword: string, newPassword: string): Observable<any> {
+    let url = this.serverUrl + '/shop/shopChangePassword';
     
     return this.http
-      .get(url, {search: params});
+      .put(url, {_id:id, oldPassword: oldPassword, newPassword: newPassword});
+  }
+
+  shopChangePass(shopId, newPassword){
+    let url = this.serverUrl + '/shopChangePass';
+    return this.http.put(url,{shopId:shopId, newPassword:newPassword});
   }
 
   logout(): Observable<any> {

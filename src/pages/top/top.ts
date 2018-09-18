@@ -9,10 +9,19 @@ import { Appservice } from "../../service/app.service";
 })
  
 export class Top {
+  auth;
+  name='';
   constructor(private dialogService: DialogService,
               private authService: AuthService,
               private appService: Appservice){}
-  ngOnInit(){}
+  ngOnInit(){
+    if(this.appService.shop!=null&&this.appService.shop.role==='관리자')
+      this.auth=true;
+    else
+      this.auth=false;
+    if(this.appService.shop!=null)
+      this.name = this.appService.shop.companyname;
+  }
 
   logout(){
     this.dialogService.loadingSubject.next('spinner');
@@ -23,7 +32,7 @@ export class Top {
       })
       .subscribe(
         () => {
-          this.appService.user = null;
+          this.appService.shop = null;
           this.appService.token = null;
           this.appService.sendEvent('logout');
         },

@@ -19,12 +19,12 @@ export class Product extends OnInit{
   order={
     itemList:[],
     //products:[],   서버에서 추가해줌
-    totalprice:0,
-    totalsaleprice:0,
-    totaloriginalprice:0
+    totalPrice:0,
+    totaldiscountPrice:0,
+    totaloriginalPrice:0,
+    totalQuantity:0
   }
   
-
   products;
   nose111 = 0
 
@@ -51,17 +51,17 @@ export class Product extends OnInit{
     super();
   }
   ngOnInit(){
-    if(this.appservice.getlog()=='admin'){
+    if(this.appservice.shop.role==='관리자'){
       this.auth= true;
     }else {
       this.auth= false;
     }
     this.showpro(this.nowcategory);
-    this.order = (this.appservice.getorderlist()!=null)?this.appservice.getorderlist():this.order;
+    // this.order = (this.appservice.getorderlist()!=null)?this.appservice.getorderlist():this.order;
   }
   
   //
-  cart(product) {
+  cart(item) {
     if (this.nose111<= 0) return;
     let orderitem={
       product:null,
@@ -73,27 +73,27 @@ export class Product extends OnInit{
     // products
     //this.order.products.push(product._id);
     // orderitemlist
-    orderitem.product = product;
+    orderitem.product = item;
     orderitem.quantity = this.nose111;
-    orderitem.originalprice = product.price*this.nose111;
-    orderitem.saleprice = orderitem.originalprice*0.1;
+    orderitem.originalprice = item.price*this.nose111;
+    orderitem.saleprice = orderitem.originalprice*this.appservice.shop.membership.sale;
     orderitem.price= orderitem.originalprice - orderitem.saleprice ;
-    
     this.order.itemList.push(orderitem);
-    this.order.totaloriginalprice += orderitem.originalprice;
-    this.order.totalsaleprice += orderitem.saleprice;
-    this.order.totalprice += orderitem.price;
-
+    this.order.totaloriginalPrice += orderitem.originalprice;
+    this.order.totaldiscountPrice += orderitem.saleprice;
+    this.order.totalPrice += orderitem.price;
+    this.order.totalQuantity+=orderitem.quantity;
   }
 
   nose11(event: any) {
-    this.nose111 = event.target.value;
+    this.nose111 = parseInt(event.target.value);
   }
 
   del_order(idx: any) {
-    this.order.totalprice-=this.order.itemList[idx].price;
-    this.order.totaloriginalprice-=this.order.itemList[idx].originalprice;
-    this.order.totalsaleprice-=this.order.itemList[idx].saleprice;
+    this.order.totalPrice-=this.order.itemList[idx].price;
+    this.order.totaloriginalPrice-=this.order.itemList[idx].originalprice;
+    this.order.totaldiscountPrice-=this.order.itemList[idx].saleprice;
+    this.order.totalQuantity-=this.order.itemList[idx].quantity;
     this.order.itemList.splice(idx, 1);
     //this.order.products.splice(idx,1);
     
@@ -102,8 +102,6 @@ export class Product extends OnInit{
   display_modal(detailpro){
     this.detail = detailpro;
     this.displaymodal = true;
-    console.log(detailpro);
-    console.log(typeof(detailpro));
   }
 
   close_modal(){
@@ -116,8 +114,6 @@ export class Product extends OnInit{
 
   showpro(ca){
     this.nowcategory=ca;
-    console.log(ca);
-    console.log (typeof(ca));
     this.displaylist=true;
     let skip = 0;
     let params: any = {

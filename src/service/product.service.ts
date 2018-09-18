@@ -1,3 +1,4 @@
+declare var _;
 import {Observable} from "rxjs";
 import {Injectable} from "@angular/core";
 import {InterceptableHttp} from "../lib/ng-http-interceptor";
@@ -32,11 +33,12 @@ export class ProductService{
   }
 
   findList(queryParams: any): Observable<any>{
-    let url = this.serverUrl + '/findList';
+    let url = this.serverUrl + '/find';
     let params: URLSearchParams = new URLSearchParams();
-    for(var key in queryParams){
-      params.set(key,JSON.stringify(queryParams[key]));
-    }
+
+    _.forEach(queryParams,(value,key) => {
+      params.set(key,JSON.stringify(value));
+    });
     console.log(params);
     return this.http
       .get(url, {search: params});
@@ -45,9 +47,11 @@ export class ProductService{
   findOne(queryParams: any): Observable<any>{
     let url = this.serverUrl + '/findOne';
     let params: URLSearchParams = new URLSearchParams();
-    for(var key in queryParams){
-      params.set(key,JSON.stringify(queryParams[key]));
-    }
+    
+    _.forEach(queryParams,(value,key) => {
+      params.set(key,JSON.stringify(value));
+    });
+    
     return this.http
       .get(url, {search: params});
   }

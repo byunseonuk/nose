@@ -1,0 +1,71 @@
+<div class="container">
+  <form>
+    <div class="form-group">
+      <label>아이디</label>
+      <input type="text"
+            name="identifier"
+            [(ngModel)]="shop.identifier"/>
+    </div>
+    <div *ngIf="!shopId">
+      <label>비밀번호</label>
+      <input type="password"
+            name="password"
+            [(ngModel)]="shop.password"/>
+    </div>
+    <div>
+      <label>회사이름</label>
+      <input type="text"
+            name="companyname"
+            [(ngModel)]="shop.companyname"/>
+    </div>
+
+    <div>
+      <label>회원등급</label>
+      <select [(ngModel)]="membership" 
+              (change)="test()"
+              [ngModelOptions]="{standalone: true}">
+        <option *ngFor="let item of membershiplist;" [ngValue]="item" [selected]="item.level===membership.level">{{item.level}}</option>
+      </select>
+    </div>
+
+    <div>
+      <label>회사주소</label>
+      <input  type="text"
+              readonly
+              name="zipCode"
+              placeholder="우편주소"
+              [(ngModel)]="companyaddr.zipCode">
+      <button (click)="openDaumMapForm()">
+        <label>주소찾기</label>
+      </button>
+      <input  type="text"
+              name="addressInfo"
+              placeholder="주소"
+              [(ngModel)]="companyaddr.address">
+      <input  type="text"
+              name="detailAddress"
+              placeholder="상세주소"
+              [(ngModel)]="companyaddr.detailAddress">  
+    </div>
+
+    <div>
+      <label>회사전화</label>
+      <input type="text"
+            name="tel"
+            [(ngModel)]="shop.tel"/>
+    </div>
+
+    <div>
+      <label>이메일</label>
+      <input type="email"
+            name="email"
+            [(ngModel)]="shop.email"/>
+    </div>
+
+    <div>
+      <button type="submit" (click)="submit()">완료</button>
+      <button (click)="dismiss()">취소</button>
+    </div>
+  </form>
+</div>
+<!-- <div>{{testhttp}}</div> -->

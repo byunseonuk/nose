@@ -67,8 +67,7 @@ export class ProductForm extends OnInit{
 
   loadproduct(){
     this.productservice.findOne({
-      query: {_id: this.productId},
-      populate: ['photos']
+      query: {_id: this.productId}
     })
       .subscribe(
         (productWrapper) => {

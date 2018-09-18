@@ -20,5 +20,17 @@
         <td>{{notice.createdAt | date:"yyyy.MM.dd"}}</td>
       </tr>
     </table>
+    <div class="grid-footer-panel" [style.height]="options.footerHeight">
+      <pager
+        [pagerLeftArrowIcon]="options.pagerLeftArrow"
+        [pagerRightArrowIcon]="options.pagerRightArrow"
+        [pagerPreviousIcon]="options.pagerPrevious"
+        [pagerNextIcon]="options.pagerNext"
+        [page]="options.page"
+        [size]="options.limit"
+        [count]="options.count"
+        (change)="getNoticeList($event)">
+      </pager>
+    </div>
   </div>
 </div>

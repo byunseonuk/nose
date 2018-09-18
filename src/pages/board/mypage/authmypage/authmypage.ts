@@ -1,7 +1,8 @@
 import { Component, OnInit} from '@angular/core';
 import { Appservice } from '../../../../service/app.service';
-import { AuthService } from 'service/auth.service';
-import { DialogService } from 'service/dialog-message/dialog-message.service';
+import { AuthService } from '../../../../service/auth.service';
+import { DialogService } from '../../../../service/dialog-message/dialog-message.service';
+import { ShopService } from '../../../../service/shop.service';
 
 @Component({
     selector: 'authmypage',
@@ -16,39 +17,34 @@ export class AuthMypage implements OnInit {
     
     constructor(private appService: Appservice,
                 private authService: AuthService,
+                private shopService: ShopService,
                 private dialogService: DialogService){
     }
     ngOnInit(){
-        this.appService.user.identifier;
+        this.appService.shop.identifier;
         this.loginInfo = {
             identifier: '',
             password: ''
         };
         this.validationText = '';
+        console.log(this.appService.shop._id);
     }
 
 
-    login() {
+    checkShop() {
         this.dialogService.loadingSubject.next('spinner');
         console.log("아이디는" + this.loginInfo['identifier']);
 
-        this.authService.shoplogin(this.appService.user.identifier, this.loginInfo['password'])
+        this.shopService.checkshopid(this.appService.shop._id, this.loginInfo['password'])
         .finally(() => {
             this.dialogService.loadingSubject.next('hide');
         })
         .subscribe(
-            (userWrapper) => {
-            if(userWrapper['user']){
-                if(userWrapper['user'].role != '관리자') {
-                this.dialogService.message("알림", "관리자만 접속 할수 있는 공간 입니다.");
-                } else if(userWrapper['user'].isDeleted) {
-                this.dialogService.message("알림", "비활성화된 계정입니다. 다른 관리자에게 요청해주세요.");
-                } else {
-                    this.check = "True";
+            (shopWrapper) => {
+                if(shopWrapper['ok']){
+                 if(shopWrapper['ok']==='ok')
+                    this.check="True";
                 }
-            } else if(!userWrapper['user']){
-                this.dialogService.message("알림", "등록되지 않은 사용자입니다.");
-            }
             },
             (err) => {
             let subTitle = '';
